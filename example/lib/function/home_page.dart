@@ -22,7 +22,7 @@ class HomePage extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text('SharedPreference'),
+            title: const Text('SharedPreference工具类'),
             onTap: () {
               Get.toNamed(RouterName.sharedPreference);
             },
