@@ -16,6 +16,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  # 状态管理器
+  get: 4.6.1
 
   flutter_util_code:
     # When depending on this package from a real application you should use:
