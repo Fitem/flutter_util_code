@@ -1,21 +1,34 @@
 # flutter_util_code
 
-一个 Flutter 工具类集合插件，封装了常用的工具类，方面开发者调用。
+[![Pub](https://img.shields.io/pub/v/flutter_util_code.svg)](https://pub.dev/packages/flutter_util_code)
 
-## 系统环境
+A Flutter utility class collection library that includes some commonly used functions and encapsulated system API calls to improve development efficiency.
+
+Language: English | [简体中文](README-ZH.md)
+
+### NativeBridge dependency
+
+Add dependencies in pubspec.yaml:
+
+~~~yaml
+dependencies：
+  flutter_util_code: ^latest_version
+~~~
+
+### System Environment
 - Flutter: 3.10.2
 - Dart: 3.0.2
 
-## 工具类整理（后续继续更新中）
-- [x] [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart)：日志工具类
-- [x] [SharedPresUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/shared_preference_utils.dart)：SharedPreferences工具类
-- [ ] AppUtils：App工具类
-- [ ] DeviceUtils：设备工具类
-- [ ] FileUtils：文件工具类
-- [ ] UUIDUtils：UUID工具类
-- [ ] EncryptUtils：加密工具类
-- [ ] NetworkUtils：网络监听工具类
-- [ ] UrlLauncherUtils：URL跳转工具类
-- [ ] ShareUtils：分享工具类
-- [ ] PermissionUtils：权限工具类
-- [ ] LocationUtils：定位工具类
+### Utils（Continue to update later）
+- [x] [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart)：Logging utility class
+- [x] [SharedPresUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/shared_preference_utils.dart)：SharedPreferences utility class
+- [ ] AppUtils：App utility class
+- [ ] DeviceUtils：Device utility class
+- [ ] FileUtils：File utility class
+- [ ] UUIDUtils：UUID utility class
+- [ ] EncryptUtils：Encryption utility class
+- [ ] NetworkUtils：Network monitoring utility class
+- [ ] UrlLauncherUtils：URL jump utility class
+- [ ] ShareUtils：Share utility class
+- [ ] PermissionUtils：Permission utility class
+- [ ] LocationUtils：Location utility class
