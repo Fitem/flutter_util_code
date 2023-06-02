@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 ///  Name: 吐司工具类
+///  基于 [fluttertoast](https://pub.dev/packages/fluttertoast)
 ///  Created by Fitem on 2023/6/1
 class ToastUtils {
   /// 背景色

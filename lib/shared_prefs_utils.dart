@@ -2,6 +2,7 @@ import 'package:flutter_util_code/utils.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 ///  Name: SP工具类
+///  基于 [shared_preferences](https://pub.dev/packages/shared_preferences)
 ///  Created by Fitem on 2023/5/31
 class SharedPrefsUtil {
 
