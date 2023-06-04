@@ -22,6 +22,7 @@ dependencies：
 ### 工具类整理（后续继续更新中）
 - [x] [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart)：日志工具类
 - [x] [SharedPresUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/shared_preference_utils.dart)：SharedPreferences工具类
+- [x] [ToastUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/toast_utils.dart)：Toast工具类
 - [ ] AppUtils：App工具类
 - [ ] DeviceUtils：设备工具类
 - [ ] FileUtils：文件工具类

@@ -22,6 +22,7 @@ dependencies：
 ### Utils（Continue to update later）
 - [x] [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart)：Logging utility class
 - [x] [SharedPresUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/shared_preference_utils.dart)：SharedPreferences utility class
+- [x] [ToastUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/toast_utils.dart)：Toast utility class
 - [ ] AppUtils：App utility class
 - [ ] DeviceUtils：Device utility class
 - [ ] FileUtils：File utility class
