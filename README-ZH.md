@@ -2,7 +2,7 @@
 
 [![Pub](https://img.shields.io/pub/v/flutter_util_code.svg)](https://pub.dev/packages/flutter_util_code)
 
-一个 Flutter 工具类集合插件，封装了常用的工具类，方面开发者调用。
+一个 Flutter 工具类集合插件，封装了常用的工具类，方便开发者调用。
 
 Language: [English](README.md) | 简体中文
 

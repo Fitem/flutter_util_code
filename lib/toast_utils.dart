@@ -130,6 +130,7 @@ enum FToastGravity {
 }
 
 /// Toast显示时间
+/// 两种模式：[lengthShort] 显示时长 1秒钟、[lengthLong] 显示时长 5秒钟
 /// Only for Android Platform
 enum FToast {
   /// Show Short toast for 1 sec
