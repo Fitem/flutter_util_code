@@ -7,4 +7,6 @@ class RouterName {
   static const log = "/log";
   /// SharedPreferences工具类
   static String sharedPreference = "/shared_preference";
+  /// Toast工具类
+  static String toast = "/toast";
 }

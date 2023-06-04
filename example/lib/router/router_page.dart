@@ -1,6 +1,7 @@
 import 'package:flutter_util_code_example/function/home_page.dart';
 import 'package:flutter_util_code_example/function/log_page.dart';
 import 'package:flutter_util_code_example/function/shared_prefs/shared_prefs_page.dart';
+import 'package:flutter_util_code_example/function/toast_page.dart';
 import 'package:flutter_util_code_example/router/router_name.dart';
 import 'package:get/get.dart';
 
@@ -14,15 +15,23 @@ class RouterPage {
       name: RouterName.home,
       page: () => const HomePage(),
     ),
+
     /// 日志工具类页
     GetPage(
       name: RouterName.log,
       page: () => const LogPage(),
     ),
+
     /// SharedPreference工具类页
     GetPage(
       name: RouterName.sharedPreference,
       page: () => const SharedPrefsPage(),
     ),
+
+    /// Toast工具类页
+    GetPage(
+      name: RouterName.toast,
+      page: () => const ToastPage(),
+    )
   ];
 }

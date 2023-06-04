@@ -27,6 +27,12 @@ class HomePage extends StatelessWidget {
               Get.toNamed(RouterName.sharedPreference);
             },
           ),
+          ListTile(
+            title: const Text('Toast工具类'),
+            onTap: () {
+              Get.toNamed(RouterName.toast);
+            },
+          ),
         ],
       ),
     );
