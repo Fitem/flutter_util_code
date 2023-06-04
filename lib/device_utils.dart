@@ -10,10 +10,101 @@ class DeviceUtils {
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
   static Map<String, dynamic>? _deviceData;
 
-  // 定义平台类型
-  static const platform = [];
+  /// 获取设备ID
+  static Future<String> getDeviceId() async {
+    Map<String, dynamic> deviceData = await getDeviceData();
+    if (kIsWeb) {
+      return '';
+    } else {
+      return switch (defaultTargetPlatform) {
+        TargetPlatform.android => deviceData['fingerprint'],
+        TargetPlatform.iOS => deviceData['identifierForVendor'],
+        TargetPlatform.linux => '',
+        TargetPlatform.windows => '',
+        TargetPlatform.macOS => '',
+        TargetPlatform.fuchsia => '',
+      };
+    }
+  }
 
-  Map<String, dynamic> _readAndroidBuildData(AndroidDeviceInfo build) {
+  /// 设备型号
+  static Future<String> getModel() async {
+    Map<String, dynamic> deviceData = await getDeviceData();
+    return deviceData['model'];
+  }
+
+  /// 设备系统版本号
+  static Future<String> getSystemVersion() async {
+    Map<String, dynamic> deviceData = await getDeviceData();
+    if (kIsWeb) {
+      return '';
+    } else {
+      return switch (defaultTargetPlatform) {
+        TargetPlatform.android => deviceData['version.sdkInt'],
+        TargetPlatform.iOS => deviceData['systemVersion'],
+        TargetPlatform.linux => '',
+        TargetPlatform.windows => '',
+        TargetPlatform.macOS => '',
+        TargetPlatform.fuchsia => '',
+      };
+    }
+  }
+
+  /// 设备系统名称
+  static Future<String> getSystemName() async {
+    Map<String, dynamic> deviceData = await getDeviceData();
+    if (kIsWeb) {
+      return deviceData['browserName'];
+    } else {
+      return switch (defaultTargetPlatform) {
+        TargetPlatform.android => deviceData['version.incremental'],
+        TargetPlatform.iOS => deviceData['systemName'],
+        TargetPlatform.linux => 'Linux',
+        TargetPlatform.windows => 'Windows',
+        TargetPlatform.macOS => 'MacOS',
+        TargetPlatform.fuchsia => 'Fuchsia',
+      };
+    }
+  }
+
+  /// 设备品牌
+  static Future<String> getBrand() async {
+    Map<String, dynamic> deviceData = await getDeviceData();
+    if (kIsWeb) {
+      return '';
+    } else {
+      return switch (defaultTargetPlatform) {
+        TargetPlatform.android => deviceData['brand'],
+        TargetPlatform.iOS => deviceData['name'],
+        TargetPlatform.linux => '',
+        TargetPlatform.windows => '',
+        TargetPlatform.macOS => '',
+        TargetPlatform.fuchsia => '',
+      };
+    }
+  }
+
+  /// 获取设备信息
+  static Future<Map<String, dynamic>> getDeviceData() async {
+    if (_deviceData != null) {
+      return _deviceData!;
+    }
+    if (kIsWeb) {
+      _deviceData = _readWebBrowserInfo(await deviceInfoPlugin.webBrowserInfo);
+    } else {
+      _deviceData = switch (defaultTargetPlatform) {
+        TargetPlatform.android => _readAndroidDeviceInfo(await deviceInfoPlugin.androidInfo),
+        TargetPlatform.iOS => _readIosDeviceInfo(await deviceInfoPlugin.iosInfo),
+        TargetPlatform.linux => _readLinuxDeviceInfo(await deviceInfoPlugin.linuxInfo),
+        TargetPlatform.windows => _readWindowsDeviceInfo(await deviceInfoPlugin.windowsInfo),
+        TargetPlatform.macOS => _readMacOsDeviceInfo(await deviceInfoPlugin.macOsInfo),
+        TargetPlatform.fuchsia => <String, dynamic>{'Error:': 'Fuchsia platform isn\'t supported'},
+      };
+    }
+    return _deviceData!;
+  }
+
+  static Map<String, dynamic> _readAndroidDeviceInfo(AndroidDeviceInfo build) {
     return <String, dynamic>{
       'version.securityPatch': build.version.securityPatch,
       'version.sdkInt': build.version.sdkInt,
@@ -52,7 +143,7 @@ class DeviceUtils {
     };
   }
 
-  Map<String, dynamic> _readIosDeviceInfo(IosDeviceInfo data) {
+  static Map<String, dynamic> _readIosDeviceInfo(IosDeviceInfo data) {
     return <String, dynamic>{
       'name': data.name,
       'systemName': data.systemName,
@@ -69,7 +160,7 @@ class DeviceUtils {
     };
   }
 
-  Map<String, dynamic> _readLinuxDeviceInfo(LinuxDeviceInfo data) {
+  static Map<String, dynamic> _readLinuxDeviceInfo(LinuxDeviceInfo data) {
     return <String, dynamic>{
       'name': data.name,
       'version': data.version,
@@ -85,7 +176,7 @@ class DeviceUtils {
     };
   }
 
-  Map<String, dynamic> _readWebBrowserInfo(WebBrowserInfo data) {
+  static Map<String, dynamic> _readWebBrowserInfo(WebBrowserInfo data) {
     return <String, dynamic>{
       'browserName': describeEnum(data.browserName),
       'appCodeName': data.appCodeName,
@@ -105,7 +196,7 @@ class DeviceUtils {
     };
   }
 
-  Map<String, dynamic> _readMacOsDeviceInfo(MacOsDeviceInfo data) {
+  static Map<String, dynamic> _readMacOsDeviceInfo(MacOsDeviceInfo data) {
     return <String, dynamic>{
       'computerName': data.computerName,
       'hostName': data.hostName,
@@ -123,7 +214,7 @@ class DeviceUtils {
     };
   }
 
-  Map<String, dynamic> _readWindowsDeviceInfo(WindowsDeviceInfo data) {
+  static Map<String, dynamic> _readWindowsDeviceInfo(WindowsDeviceInfo data) {
     return <String, dynamic>{
       'numberOfCores': data.numberOfCores,
       'computerName': data.computerName,
@@ -153,5 +244,3 @@ class DeviceUtils {
     };
   }
 }
-
-enum Platform { android, iOS, linux, macOS, windows, web }
