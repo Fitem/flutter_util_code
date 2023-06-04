@@ -16,6 +16,8 @@ dependencies:
   fluttertoast: ^8.2.2
   # 设备信息
   device_info_plus: ^9.0.2
+  # UUID
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:
