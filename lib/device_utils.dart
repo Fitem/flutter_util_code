@@ -61,8 +61,8 @@ class DeviceUtils {
       return '';
     } else {
       return switch (defaultTargetPlatform) {
-        TargetPlatform.android => deviceData['version.sdkInt'],
-        TargetPlatform.iOS => deviceData['systemVersion'],
+        TargetPlatform.android => '${deviceData['version.sdkInt']}',
+        TargetPlatform.iOS => '${deviceData['systemVersion']}',
         TargetPlatform.linux => '',
         TargetPlatform.windows => '',
         TargetPlatform.macOS => '',

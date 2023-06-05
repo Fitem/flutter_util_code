@@ -43,7 +43,7 @@ class RouterPage {
     /// 设备Device工具类页
     GetPage(
       name: RouterName.device,
-      page: () => const DevicePage(),
+      page: () => DevicePage(),
     ),
   ];
 }
