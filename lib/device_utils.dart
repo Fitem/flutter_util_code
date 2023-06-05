@@ -1,21 +1,39 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_util_code/sp_constants.dart';
+import 'package:flutter_util_code/utils.dart';
 
 ///  Name: 设备工具类
 ///  基于 [device_info_plus](https://pub.dev/packages/device_info_plus)
+///  目前仅支持 iOS 和 Android，其他平台返回空字符串
 ///  Created by Fitem on 2023/6/2
 class DeviceUtils {
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
   static Map<String, dynamic>? _deviceData;
+  static String? _deviceId;
 
-  /// 获取设备ID
+  /// 获取唯一设备 ID
+  /// 若没有从设备获取到，则生成一个 UUID 作为设备 ID
+  /// 其中 Android需要 READ_PHONE_STATE 权限
+  /// 详情见 [Android docs](https://developer.android.com/reference/android/os/Build#getSerial())
   static Future<String> getDeviceId() async {
+    // 如果已经获取过设备ID，则直接返回
+    if (_deviceId != null && _deviceId!.isNotEmpty) {
+      return _deviceId!;
+    }
+    // 从本地获取设备ID
+    String? deviceId = await SharedPrefsUtil.getString(SPConstants.deviceId);
+    if (deviceId != null && deviceId.isNotEmpty) {
+      _deviceId = deviceId;
+      return _deviceId!;
+    }
+    // 获取设备ID
     Map<String, dynamic> deviceData = await getDeviceData();
     if (kIsWeb) {
-      return '';
+      _deviceId = '';
     } else {
-      return switch (defaultTargetPlatform) {
-        TargetPlatform.android => deviceData['fingerprint'],
+      _deviceId = switch (defaultTargetPlatform) {
+        TargetPlatform.android => deviceData['serialNumber'],
         TargetPlatform.iOS => deviceData['identifierForVendor'],
         TargetPlatform.linux => '',
         TargetPlatform.windows => '',
@@ -23,15 +41,20 @@ class DeviceUtils {
         TargetPlatform.fuchsia => '',
       };
     }
+    // 如果获取不到，则生成一个UUID
+    _deviceId = _getUniqueDeviceId(_deviceId);
+    // 保存到本地
+    SharedPrefsUtil.putString(SPConstants.deviceId, _deviceId!);
+    return _deviceId!;
   }
 
-  /// 设备型号
+  /// 获取设备型号
   static Future<String> getModel() async {
     Map<String, dynamic> deviceData = await getDeviceData();
-    return deviceData['model'];
+    return deviceData['model'] ?? '';
   }
 
-  /// 设备系统版本号
+  /// 获取设备系统版本号
   static Future<String> getSystemVersion() async {
     Map<String, dynamic> deviceData = await getDeviceData();
     if (kIsWeb) {
@@ -48,19 +71,19 @@ class DeviceUtils {
     }
   }
 
-  /// 设备系统名称
+  /// 获取设备系统名称
   static Future<String> getSystemName() async {
     Map<String, dynamic> deviceData = await getDeviceData();
     if (kIsWeb) {
       return deviceData['browserName'];
     } else {
       return switch (defaultTargetPlatform) {
-        TargetPlatform.android => deviceData['version.incremental'],
+        TargetPlatform.android => deviceData['display'],
         TargetPlatform.iOS => deviceData['systemName'],
-        TargetPlatform.linux => 'Linux',
-        TargetPlatform.windows => 'Windows',
-        TargetPlatform.macOS => 'MacOS',
-        TargetPlatform.fuchsia => 'Fuchsia',
+        TargetPlatform.linux => '',
+        TargetPlatform.windows => '',
+        TargetPlatform.macOS => '',
+        TargetPlatform.fuchsia => '',
       };
     }
   }
@@ -79,6 +102,15 @@ class DeviceUtils {
         TargetPlatform.macOS => '',
         TargetPlatform.fuchsia => '',
       };
+    }
+  }
+
+  /// 获取 设备唯一 ID
+  static String _getUniqueDeviceId(String? deviceId) {
+    if (deviceId == null || deviceId.isEmpty) {
+      return UuidUtils.getUuid();
+    } else {
+      return deviceId;
     }
   }
 
