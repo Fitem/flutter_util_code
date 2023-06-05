@@ -23,10 +23,10 @@ dependencies：
 - [x] [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart)：Logging utility class
 - [x] [SharedPresUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/shared_preference_utils.dart)：SharedPreferences utility class
 - [x] [ToastUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/toast_utils.dart)：Toast utility class
+- [x] [UuidUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/uuid_utils.dart)：UUID utility class
+- [x] [DeviceUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/device_utils.dart)：Device utility class
 - [ ] AppUtils：App utility class
-- [ ] DeviceUtils：Device utility class
 - [ ] FileUtils：File utility class
-- [ ] UUIDUtils：UUID utility class
 - [ ] EncryptUtils：Encryption utility class
 - [ ] NetworkUtils：Network monitoring utility class
 - [ ] UrlLauncherUtils：URL jump utility class
