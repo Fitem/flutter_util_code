@@ -1,6 +1,7 @@
+import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_util_code/sp_constants.dart';
+import 'package:flutter_util_code/constants/sp_constants.dart';
 import 'package:flutter_util_code/utils.dart';
 
 ///  Name: 设备工具类
@@ -10,12 +11,11 @@ import 'package:flutter_util_code/utils.dart';
 class DeviceUtils {
   static final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
   static Map<String, dynamic>? _deviceData;
+  static const _androidIdPlugin = AndroidId();
   static String? _deviceId;
 
   /// 获取唯一设备 ID
   /// 若没有从设备获取到，则生成一个 UUID 作为设备 ID
-  /// 其中 Android需要 READ_PHONE_STATE 权限
-  /// 详情见 [Android docs](https://developer.android.com/reference/android/os/Build#getSerial())
   static Future<String> getDeviceId() async {
     // 如果已经获取过设备ID，则直接返回
     if (_deviceId != null && _deviceId!.isNotEmpty) {
@@ -33,7 +33,7 @@ class DeviceUtils {
       _deviceId = '';
     } else {
       _deviceId = switch (defaultTargetPlatform) {
-        TargetPlatform.android => deviceData['serialNumber'],
+        TargetPlatform.android => await _getAndroidId(),
         TargetPlatform.iOS => deviceData['identifierForVendor'],
         TargetPlatform.linux => '',
         TargetPlatform.windows => '',
@@ -103,6 +103,17 @@ class DeviceUtils {
         TargetPlatform.fuchsia => '',
       };
     }
+  }
+
+  /// 获取 AndroidId
+  static Future<String?> _getAndroidId() async {
+    String? androidId = await _androidIdPlugin.getId();
+    if ("9774d56d682e549c" == androidId) return null;
+    // 根据 AndroidId 生成 UUID
+    if (androidId != null && androidId.isNotEmpty) {
+      return UuidUtils.getUuidV5(androidId);
+    }
+    return null;
   }
 
   /// 获取 设备唯一 ID

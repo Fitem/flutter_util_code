@@ -1,7 +1,9 @@
+import 'package:flutter_util_code_example/function/device_page.dart';
 import 'package:flutter_util_code_example/function/home_page.dart';
 import 'package:flutter_util_code_example/function/log_page.dart';
 import 'package:flutter_util_code_example/function/shared_prefs/shared_prefs_page.dart';
 import 'package:flutter_util_code_example/function/toast_page.dart';
+import 'package:flutter_util_code_example/function/uuid_page.dart';
 import 'package:flutter_util_code_example/router/router_name.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +15,7 @@ class RouterPage {
     /// 首页
     GetPage(
       name: RouterName.home,
-      page: () => const HomePage(),
+      page: () => HomePage(),
     ),
 
     /// 日志工具类页
@@ -32,6 +34,16 @@ class RouterPage {
     GetPage(
       name: RouterName.toast,
       page: () => const ToastPage(),
-    )
+    ),
+    /// UUID工具类页
+    GetPage(
+      name: RouterName.uuid,
+      page: () => const UuidPage(),
+    ),
+    /// 设备Device工具类页
+    GetPage(
+      name: RouterName.device,
+      page: () => const DevicePage(),
+    ),
   ];
 }

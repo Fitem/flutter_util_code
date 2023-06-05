@@ -16,6 +16,8 @@ dependencies:
   fluttertoast: ^8.2.2
   # 设备信息
   device_info_plus: ^9.0.2
+  # AndroidID
+  android_id: ^0.3.3
   # UUID
   uuid: ^3.0.7
 

@@ -9,4 +9,8 @@ class RouterName {
   static String sharedPreference = "/shared_preference";
   /// Toast工具类
   static String toast = "/toast";
+  /// UUID工具类
+  static String uuid = "/uuid";
+  /// 设备Device工具类
+  static String device = "/device";
 }
