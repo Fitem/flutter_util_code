@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       onGenerateTitle: (context) => 'FlutterUtilCode',
       initialRoute: RouterName.home,
       getPages: RouterPage.pages,
