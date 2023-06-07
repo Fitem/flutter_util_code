@@ -13,6 +13,7 @@ class HomePage extends StatelessWidget {
     RouterName.toast: 'Toast工具类',
     RouterName.uuid: 'UUID工具类',
     RouterName.device: '设备Device工具类',
+    RouterName.app: 'App工具类',
   };
 
   @override

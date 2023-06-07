@@ -13,4 +13,6 @@ class RouterName {
   static String uuid = "/uuid";
   /// 设备Device工具类
   static String device = "/device";
+  /// App工具类
+  static String app = "/app";
 }

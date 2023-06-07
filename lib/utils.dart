@@ -5,3 +5,4 @@ export 'shared_prefs_utils.dart';
 export 'toast_utils.dart';
 export 'uuid_utils.dart';
 export 'device_utils.dart';
+export 'app_utils.dart';

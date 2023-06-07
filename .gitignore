@@ -80,3 +80,4 @@ ios/Flutter/Flutter.podspec
 /xx/
 /ios/Podfile
 /ios/Podfile.lock
+/example/ios/Podfile.lock

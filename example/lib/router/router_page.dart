@@ -1,3 +1,4 @@
+import 'package:flutter_util_code_example/function/app_page.dart';
 import 'package:flutter_util_code_example/function/device_page.dart';
 import 'package:flutter_util_code_example/function/home_page.dart';
 import 'package:flutter_util_code_example/function/log_page.dart';
@@ -44,6 +45,11 @@ class RouterPage {
     GetPage(
       name: RouterName.device,
       page: () => DevicePage(),
+    ),
+    /// App工具类页
+    GetPage(
+      name: RouterName.app,
+      page: () => const AppPage(),
     ),
   ];
 }
