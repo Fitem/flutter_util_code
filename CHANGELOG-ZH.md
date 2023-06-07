@@ -2,6 +2,9 @@
 
 Language: [English](CHANGELOG.md) | 简体中文
 
+# 0.0.4
+- 新增 AppUtils: App工具类
+
 # 0.0.3
 - 新增 UuidUtils: UUID工具类
 - 新增 DeviceUtils: Device工具类

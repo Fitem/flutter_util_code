@@ -25,7 +25,7 @@ dependencies：
 - [x] [ToastUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/toast_utils.dart)：Toast utility class
 - [x] [UuidUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/uuid_utils.dart)：UUID utility class
 - [x] [DeviceUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/device_utils.dart)：Device utility class
-- [ ] AppUtils：App utility class
+- [x] [AppUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/app_utils.dart)：App utility class
 - [ ] FileUtils：File utility class
 - [ ] EncryptUtils：Encryption utility class
 - [ ] NetworkUtils：Network monitoring utility class
