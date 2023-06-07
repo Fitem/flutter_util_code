@@ -20,11 +20,11 @@ class DevicePage extends StatelessWidget {
         height: double.infinity,
         child: Column(
           children: [
-            ElevatedButton(onPressed: () async => addContent('getDeviceId: ${await DeviceUtils.getDeviceId()}'), child: const Text('获取设备ID')),
-            ElevatedButton(onPressed: () async => addContent('getModel: ${await DeviceUtils.getModel()}'), child: const Text('获取设备型号')),
-            ElevatedButton(onPressed: () async => addContent('getSystemVersion: ${await DeviceUtils.getSystemVersion()}'), child: const Text('获取设备系统版本号')),
-            ElevatedButton(onPressed: () async => addContent('getSystemName: ${await DeviceUtils.getSystemName()}'), child: const Text('获取设备系统名称')),
-            ElevatedButton(onPressed: () async => addContent('getBrand: ${await DeviceUtils.getBrand()}'), child: const Text('获取设备品牌')),
+            ElevatedButton(onPressed: () async => addContent('设备唯一ID: ${await DeviceUtils.getDeviceId()}'), child: const Text('获取设备ID')),
+            ElevatedButton(onPressed: () async => addContent('品牌: ${await DeviceUtils.getBrand()}'), child: const Text('获取设备品牌')),
+            ElevatedButton(onPressed: () async => addContent('设备型号: ${await DeviceUtils.getModel()}'), child: const Text('获取设备型号')),
+            ElevatedButton(onPressed: () async => addContent('系统版本: ${await DeviceUtils.getSystemVersion()}'), child: const Text('获取设备系统版本号')),
+            ElevatedButton(onPressed: () async => addContent('版本名称: ${await DeviceUtils.getSystemName()}'), child: const Text('获取设备系统名称')),
             const Spacer(),
             Expanded(
                 flex: 2,

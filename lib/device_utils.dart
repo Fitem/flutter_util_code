@@ -54,7 +54,7 @@ class DeviceUtils {
     return deviceData['model'] ?? '';
   }
 
-  /// 获取设备系统版本号
+  /// 获取操作系统版本号
   static Future<String> getSystemVersion() async {
     Map<String, dynamic> deviceData = await getDeviceData();
     if (kIsWeb) {
