@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 
 ///  Name: Path工具类
+///  基于 [path_provider](https://pub.dev/packages/path_provider)
 ///  Created by Fitem on 2023/6/8
 class PathUtils {
   /// App缓存路径
