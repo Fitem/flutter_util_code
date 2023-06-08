@@ -14,6 +14,7 @@ class HomePage extends StatelessWidget {
     RouterName.uuid: 'UUID工具类',
     RouterName.device: '设备Device工具类',
     RouterName.app: 'App工具类',
+    RouterName.path: 'Path工具类',
   };
 
   @override

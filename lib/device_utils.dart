@@ -22,7 +22,7 @@ class DeviceUtils {
       return _deviceId!;
     }
     // 从本地获取设备ID
-    String? deviceId = await SharedPrefsUtil.getString(SPConstants.deviceId);
+    String? deviceId = await SharedPrefsUtils.getString(SPConstants.deviceId);
     if (deviceId != null && deviceId.isNotEmpty) {
       _deviceId = deviceId;
       return _deviceId!;
@@ -44,7 +44,7 @@ class DeviceUtils {
     // 如果获取不到，则生成一个UUID
     _deviceId = _getUniqueDeviceId(_deviceId);
     // 保存到本地
-    SharedPrefsUtil.putString(SPConstants.deviceId, _deviceId!);
+    SharedPrefsUtils.putString(SPConstants.deviceId, _deviceId!);
     return _deviceId!;
   }
 

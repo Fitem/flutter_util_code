@@ -33,19 +33,19 @@ class SharedPrefsPageState<SharedPreferencePage> extends State {
 
   /// 添加数据
   void _handlePut() {
-    SharedPrefsUtil.putString(SPConstants.name, '小明');
-    SharedPrefsUtil.putInt(SPConstants.age, 18);
-    SharedPrefsUtil.putDouble(SPConstants.height, 175.5);
-    SharedPrefsUtil.putBool(SPConstants.gender, true);
-    SharedPrefsUtil.putStringList(SPConstants.family, ['爸爸', '妈妈', '哥哥', '弟弟']);
+    SharedPrefsUtils.putString(SPConstants.name, '小明');
+    SharedPrefsUtils.putInt(SPConstants.age, 18);
+    SharedPrefsUtils.putDouble(SPConstants.height, 175.5);
+    SharedPrefsUtils.putBool(SPConstants.gender, true);
+    SharedPrefsUtils.putStringList(SPConstants.family, ['爸爸', '妈妈', '哥哥', '弟弟']);
   }
 
   /// 获取数据
   Future<void> _handleGet() async {
-    var name = await SharedPrefsUtil.getString(SPConstants.name, '');
-    var age = await SharedPrefsUtil.getInt(SPConstants.age, 0);
-    var height = await SharedPrefsUtil.getDouble(SPConstants.height, 0.0);
-    var gender = await SharedPrefsUtil.getBool(SPConstants.gender, false);
-    var family = await SharedPrefsUtil.getStringList(SPConstants.family, []);
+    var name = await SharedPrefsUtils.getString(SPConstants.name, '');
+    var age = await SharedPrefsUtils.getInt(SPConstants.age, 0);
+    var height = await SharedPrefsUtils.getDouble(SPConstants.height, 0.0);
+    var gender = await SharedPrefsUtils.getBool(SPConstants.gender, false);
+    var family = await SharedPrefsUtils.getStringList(SPConstants.family, []);
   }
 }

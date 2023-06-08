@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 ///  Name: SP工具类
 ///  基于 [shared_preferences](https://pub.dev/packages/shared_preferences)
 ///  Created by Fitem on 2023/5/31
-class SharedPrefsUtil {
+class SharedPrefsUtils {
 
   /// 添加String类型数据
   /// [key] 键
@@ -103,7 +103,7 @@ class SharedPrefsUtil {
 
   /// 打印日志
   static void _println(String methodName, String key, dynamic value) {
-    LogUtil.println('''SharedPref $methodName:
+    LogUtils.println('''SharedPref $methodName:
     key: $key 
     value: $value''');
   }

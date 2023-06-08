@@ -28,7 +28,7 @@ class LogPageState<LogPage> extends State {
               mainAxisSize: MainAxisSize.min,
               children: [
                 const Text('日志开关:'),
-                Switch(value: LogUtil.isOpenLog, onChanged: onSwitchChanged),
+                Switch(value: LogUtils.isOpenLog, onChanged: onSwitchChanged),
               ],
             ),
           ],
@@ -39,12 +39,12 @@ class LogPageState<LogPage> extends State {
 
   /// 打印日志
   void _handlePrintLog() {
-    LogUtil.println('这是一条测试日志');
+    LogUtils.println('这是一条测试日志');
   }
 
   /// 打印长日志
   void _handlePrintLongLog() {
-    LogUtil.logger('这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，'
+    LogUtils.logger('这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，'
         '这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，'
         '这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，'
         '这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，这是一条非常长的日志，');
@@ -53,9 +53,9 @@ class LogPageState<LogPage> extends State {
   /// 日志开关
   void onSwitchChanged(bool value) {
     setState(() {
-      if (!value) LogUtil.println('日志开关已关闭');
-      LogUtil.isOpenLog = value;
-      if (value) LogUtil.println('日志开关已打开');
+      if (!value) LogUtils.println('日志开关已关闭');
+      LogUtils.isOpenLog = value;
+      if (value) LogUtils.println('日志开关已打开');
     });
   }
 }

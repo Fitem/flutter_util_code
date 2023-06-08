@@ -2,6 +2,7 @@ import 'package:flutter_util_code_example/function/app_page.dart';
 import 'package:flutter_util_code_example/function/device_page.dart';
 import 'package:flutter_util_code_example/function/home_page.dart';
 import 'package:flutter_util_code_example/function/log_page.dart';
+import 'package:flutter_util_code_example/function/path_page.dart';
 import 'package:flutter_util_code_example/function/shared_prefs/shared_prefs_page.dart';
 import 'package:flutter_util_code_example/function/toast_page.dart';
 import 'package:flutter_util_code_example/function/uuid_page.dart';
@@ -50,6 +51,11 @@ class RouterPage {
     GetPage(
       name: RouterName.app,
       page: () => const AppPage(),
+    ),
+    /// Path工具类页
+    GetPage(
+      name: RouterName.path,
+      page: () => const PathPage(),
     ),
   ];
 }

@@ -15,4 +15,6 @@ class RouterName {
   static String device = "/device";
   /// App工具类
   static String app = "/app";
+  /// Path工具类
+  static String path = "/path";
 }

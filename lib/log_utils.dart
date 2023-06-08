@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 
 ///  Name: Log工具类
 ///  Created by Fitem on 2023/5/31
-class LogUtil {
+class LogUtils {
 
   /// 是否开启日志，默认Debug模式下开启
   static bool isOpenLog = kDebugMode;

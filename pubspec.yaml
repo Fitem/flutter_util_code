@@ -22,6 +22,8 @@ dependencies:
   uuid: ^3.0.7
   # 包信息
   package_info_plus: ^4.0.2
+  # 文件路径
+  path_provider: ^2.0.15
 
 dev_dependencies:
   flutter_test:
