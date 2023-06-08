@@ -2,6 +2,9 @@
 
 Language: [English](CHANGELOG.md) | 简体中文
 
+## 0.0.5
+- 新增 PathUtils: Path工具类
+
 ## 0.0.4
 - 新增 AppUtils: App工具类
 

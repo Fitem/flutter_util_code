@@ -26,6 +26,7 @@ dependencies：
 - [x] [UuidUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/uuid_utils.dart)：UUID工具类
 - [x] [DeviceUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/device_utils.dart)：设备工具类
 - [x] [AppUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/app_utils.dart)：App工具类
+- [x] [PathUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/path_utils.dart)：Path工具类
 - [ ] FileUtils：文件工具类
 - [ ] EncryptUtils：加密工具类
 - [ ] NetworkUtils：网络监听工具类
