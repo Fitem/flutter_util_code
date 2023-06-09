@@ -7,7 +7,7 @@ import 'package:path_provider/path_provider.dart';
 ///  Created by Fitem on 2023/6/8
 class PathUtils {
   /// 是否是iOS或者macOS系统，先判断是否是web，否则在web上会报错
-  static final bool _isiOSOrMacOS = !kIsWeb && (Platform.isIOS || Platform.isMacOS);
+  static final bool _isIOSOrMacOS = !kIsWeb && (Platform.isIOS || Platform.isMacOS);
 
   /// 是否是Android系统
   static final bool _isAndroid = !kIsWeb && Platform.isAndroid;
@@ -17,7 +17,7 @@ class PathUtils {
   /// - `Context.getCacheDir` on Android.
   static Future<String> getAppCachePath() async {
     // 如果不是Android或者iOS/macOS系统，则返回空字符串
-    if (!_isAndroid && !_isiOSOrMacOS) return '';
+    if (!_isAndroid && !_isIOSOrMacOS) return '';
     Directory directory = await getTemporaryDirectory();
     String path = directory.path;
     return path;
@@ -28,7 +28,7 @@ class PathUtils {
   /// - The Flutter engine's `PathUtils.getFilesDir` API on Android.
   static Future<String> getAppSupportPath() async {
     // 如果不是Android或者iOS/macOS系统，则返回空字符串
-    if (!_isAndroid && !_isiOSOrMacOS) return '';
+    if (!_isAndroid && !_isIOSOrMacOS) return '';
     Directory directory = await getApplicationSupportDirectory();
     return directory.path;
   }
@@ -38,15 +38,15 @@ class PathUtils {
   /// - The Flutter engine's `PathUtils.getDataDirectory` API on Android.
   static Future<String> getAppDocPath() async {
     // 如果不是Android或者iOS/macOS系统，则返回空字符串
-    if (!_isAndroid && !_isiOSOrMacOS) return '';
+    if (!_isAndroid && !_isIOSOrMacOS) return '';
     Directory directory = await getApplicationDocumentsDirectory();
     return directory.path;
   }
 
-  /// 系统下载文件所在目录的路径，仅在 iOS上支持
+  /// 系统下载文件所在目录的路径，仅在 iOS/macOS 上支持
   static Future<String> getDownloadPath() async {
     // 如果不是iOS/macOS系统，则返回空字符串
-    if (!_isiOSOrMacOS) return '';
+    if (!_isIOSOrMacOS) return '';
     Directory? directory = await getDownloadsDirectory();
     return directory?.path ?? '';
   }
