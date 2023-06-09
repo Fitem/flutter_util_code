@@ -1,14 +1,23 @@
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 
 ///  Name: Path工具类
 ///  基于 [path_provider](https://pub.dev/packages/path_provider)
 ///  Created by Fitem on 2023/6/8
 class PathUtils {
+  /// 是否是iOS或者macOS系统，先判断是否是web，否则在web上会报错
+  static final bool _isiOSOrMacOS = !kIsWeb && (Platform.isIOS || Platform.isMacOS);
+
+  /// 是否是Android系统
+  static final bool _isAndroid = !kIsWeb && Platform.isAndroid;
+
   /// App缓存路径
   /// - `NSCachesDirectory` on iOS and macOS.
   /// - `Context.getCacheDir` on Android.
   static Future<String> getAppCachePath() async {
+    // 如果不是Android或者iOS/macOS系统，则返回空字符串
+    if (!_isAndroid && !_isiOSOrMacOS) return '';
     Directory directory = await getTemporaryDirectory();
     String path = directory.path;
     return path;
@@ -18,6 +27,8 @@ class PathUtils {
   /// - `NSApplicationSupportDirectory` on iOS and macOS.
   /// - The Flutter engine's `PathUtils.getFilesDir` API on Android.
   static Future<String> getAppSupportPath() async {
+    // 如果不是Android或者iOS/macOS系统，则返回空字符串
+    if (!_isAndroid && !_isiOSOrMacOS) return '';
     Directory directory = await getApplicationSupportDirectory();
     return directory.path;
   }
@@ -26,12 +37,16 @@ class PathUtils {
   /// - `NSDocumentDirectory` on iOS and macOS.
   /// - The Flutter engine's `PathUtils.getDataDirectory` API on Android.
   static Future<String> getAppDocPath() async {
+    // 如果不是Android或者iOS/macOS系统，则返回空字符串
+    if (!_isAndroid && !_isiOSOrMacOS) return '';
     Directory directory = await getApplicationDocumentsDirectory();
     return directory.path;
   }
 
-  /// 系统下载文件所在目录的路径
+  /// 系统下载文件所在目录的路径，仅在 iOS上支持
   static Future<String> getDownloadPath() async {
+    // 如果不是iOS/macOS系统，则返回空字符串
+    if (!_isiOSOrMacOS) return '';
     Directory? directory = await getDownloadsDirectory();
     return directory?.path ?? '';
   }
@@ -39,6 +54,8 @@ class PathUtils {
   /// Android外部存储路径
   /// - `getExternalFilesDir(null)` on Android.
   static Future<String> getAndroidStoragePath() async {
+    // 如果不是Android系统，则返回空字符串
+    if (!_isAndroid) return '';
     Directory? directory = await getExternalStorageDirectory();
     return directory?.path ?? '';
   }
@@ -47,12 +64,16 @@ class PathUtils {
   /// - Context.getExternalCacheDirs() on Android (or
   ///   Context.getExternalCacheDir() on API levels below 19).
   static Future<List<String>> getAndroidExternalCachePaths() async {
+    // 如果不是Android系统，则返回空字符串
+    if (!_isAndroid) return [];
     List<Directory>? list = await getExternalCacheDirectories();
     return list?.map((d) => d.path).toList() ?? [];
   }
 
   /// Android外部存储-特定类型文件的路径
   static Future<List<String>> getAppExternalStoragePaths({StorageDirectoryType? type}) async {
+    // 如果不是Android系统，则返回空字符串
+    if (!_isAndroid) return [];
     List<Directory>? list = await getExternalStorageDirectories(type: _transformDirectoryType(type));
     return list?.map((d) => d.path).toList() ?? [];
   }
