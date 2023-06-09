@@ -24,6 +24,13 @@ dependencies:
   package_info_plus: ^4.0.2
   # 文件路径
   path_provider: ^2.0.15
+  # 加密: SHA、MD5
+  crypto: ^3.0.3
+  # 加密: AES、RSA、sha256withRSA签名
+  encrypt: ^5.0.1
+  pointycastle: ^3.7.3
+  # 加密: md5withRSA签名
+  fast_rsa: ^3.5.7
 
 dev_dependencies:
   flutter_test:
