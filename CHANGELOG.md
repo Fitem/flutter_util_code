@@ -2,6 +2,9 @@
 
 Language: English | [简体中文](CHANGELOG-ZH.md)
 
+## 0.0.6
+- Add EncryptUtils: Encryption utility class
+
 ## 0.0.5
 - Add PathUtils: Path utility class
 

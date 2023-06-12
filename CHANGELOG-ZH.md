@@ -2,6 +2,9 @@
 
 Language: [English](CHANGELOG.md) | 简体中文
 
+## 0.0.6
+- 新增 EncryptUtils: 加密工具类
+
 ## 0.0.5
 - 新增 PathUtils: Path工具类
 

@@ -1,6 +1,6 @@
 name: flutter_util_code
 description: A Flutter utility class collection library that includes some commonly used functions and encapsulated system API calls to improve development efficiency.
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/Fitem/flutter_util_code
 
 environment:

@@ -27,8 +27,8 @@ dependencies：
 - [x] [DeviceUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/device_utils.dart)：Device utility class
 - [x] [AppUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/app_utils.dart)：App utility class
 - [x] [PathUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/path_utils.dart)：Path utility class
+- [x] [EncryptUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/encrypt_utils.dart)：Encryption utility class
 - [ ] FileUtils：File utility class
-- [ ] EncryptUtils：Encryption utility class
 - [ ] NetworkUtils：Network monitoring utility class
 - [ ] UrlLauncherUtils：URL jump utility class
 - [ ] ShareUtils：Share utility class
