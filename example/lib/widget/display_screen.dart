@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_util_code/utils.dart';
 
 ///  Name: 显示屏Widget
 ///  Created by Fitem on 2023/6/5
@@ -27,6 +28,7 @@ class DisplayScreenState extends State<DisplayScreen>{
   void addContent(String str){
     setState(() {
       content += '$str\n';
+      LogUtils.println('content: $content');
     });
   }
 }

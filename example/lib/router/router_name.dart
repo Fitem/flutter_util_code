@@ -17,4 +17,6 @@ class RouterName {
   static String app = "/app";
   /// Path工具类
   static String path = "/path";
+  /// Encrypt工具类
+  static String encrypt = "/encrypt";
 }

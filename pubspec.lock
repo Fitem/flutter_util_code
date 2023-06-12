@@ -117,10 +117,10 @@ packages:
     dependency: "direct main"
     description:
       name: fast_rsa
-      sha256: "79bc5398e69d226497d926e85fab944e5d07bb8a9dd747129cf7be33009e386d"
+      sha256: af31af1a782e2d6025c868a418071112062e80fa84e41c44a95b5f26d00b87b7
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.5.7"
+    version: "3.5.3"
   ffi:
     dependency: transitive
     description:

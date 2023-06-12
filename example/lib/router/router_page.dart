@@ -1,5 +1,6 @@
 import 'package:flutter_util_code_example/function/app_page.dart';
 import 'package:flutter_util_code_example/function/device_page.dart';
+import 'package:flutter_util_code_example/function/encrypted_page.dart';
 import 'package:flutter_util_code_example/function/home_page.dart';
 import 'package:flutter_util_code_example/function/log_page.dart';
 import 'package:flutter_util_code_example/function/path_page.dart';
@@ -56,6 +57,11 @@ class RouterPage {
     GetPage(
       name: RouterName.path,
       page: () => const PathPage(),
+    ),
+    /// Encrypt工具类页
+    GetPage(
+      name: RouterName.encrypt,
+      page: () => const EncryptPage(),
     ),
   ];
 }

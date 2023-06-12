@@ -27,7 +27,7 @@ class EncryptUtils {
 
   /// AES加密, 默认[AESMode.ecb]加密方式
   /// [content] 明文
-  /// [key] 秘钥
+  /// [aesKey] 秘钥
   static aesEncrypt(String content, String keyStr) {
     final key = Key.fromUtf8(keyStr);
     final iv = IV.fromLength(16);
@@ -38,7 +38,7 @@ class EncryptUtils {
 
   /// AES解密, 默认[AESMode.ecb]加密方式
   /// [content] 密文
-  /// [key] 秘钥
+  /// [aesKey] 秘钥
   static aesDecrypt(String content, String keyStr) {
     final key = Key.fromUtf8(keyStr);
     final iv = IV.fromLength(16);
@@ -65,7 +65,7 @@ class EncryptUtils {
   /// [privateKeyStr]私钥
   static String rsaDecrypt(String encryptedStr, String privateKeyStr) {
     final parser = RSAKeyParser();
-    String publicKeyString = _transformPem(privateKeyStr);
+    String publicKeyString = _transformPem(privateKeyStr, isPublic: false);
     RSAPrivateKey privateKey = parser.parse(publicKeyString) as RSAPrivateKey;
     final encryptor = Encrypter(RSA(privateKey: privateKey));
     final encrypted = Encrypted.fromBase64(encryptedStr);
@@ -76,24 +76,22 @@ class EncryptUtils {
   /// sha256withRSA签名，秘钥格式为[pkcs8]
   /// [content]明文
   /// [privateKeyStr]私钥
-  static Future<String> sha256withRSASign(String content, String privateKeyStr) async {
+  static String sha256withRSASign(String content, String privateKeyStr) {
     RSAKeyParser parser = RSAKeyParser();
     Signer signer;
     // 初始化私钥
     String privateKeyString = _transformPem(privateKeyStr, isPublic: false);
     RSAPrivateKey privateKey = parser.parse(privateKeyString) as RSAPrivateKey;
     signer = Signer(RSASigner(RSASignDigest.SHA256, privateKey: privateKey));
-    // 将参数值拼接成字符串
-    var md5Str = md5Encrypt(content);
-    var sign = signer.sign(md5Str).base64;
+    var sign = signer.sign(content).base64;
     return sign;
   }
 
   /// sha256withRSA验签，秘钥格式为[pkcs8]
   /// [content]明文
-  /// [encryptedContent]密文
+  /// [signature]签名
   /// [publicKeyStr]公钥
-  static bool sha256withRSAVerify(String content, String encryptedContent, String publicKeyStr) {
+  static bool sha256withRSAVerify(String content, String signature, String publicKeyStr) {
     RSAKeyParser parser = RSAKeyParser();
     Signer signer;
     // 初始化公钥
@@ -101,37 +99,30 @@ class EncryptUtils {
     RSAPublicKey publicKey = parser.parse(publicKeyString) as RSAPublicKey;
     signer = Signer(RSASigner(RSASignDigest.SHA256, publicKey: publicKey));
     // 验签
-    var verify = signer.verify(content, Encrypted.from64(encryptedContent));
+    var verify = signer.verify(content, Encrypted.from64(signature));
     return verify;
   }
 
-  /// md5withRSA签名
+  /// md5withRSA签名，秘钥格式为[pkcs8]
   /// [content]明文
   /// [privateKeyStr]私钥
   static Future<String> md5withRSASign(String content, String privateKeyStr) async {
-    String privateKey = await fast_rsa.RSA.convertPrivateKeyToPKCS1(privateKeyStr);
-    var md5Content = md5Encrypt(content);
-    var sign = await fast_rsa.RSA.signPKCS1v15(md5Content, fast_rsa.Hash.MD5, privateKey);
+    // 初始化私钥
+    String privateKeyString = _transformPem(privateKeyStr, isPublic: false);
+    String privateKey = await fast_rsa.RSA.convertPrivateKeyToPKCS1(privateKeyString);
+    var sign = await fast_rsa.RSA.signPKCS1v15(content, fast_rsa.Hash.MD5, privateKey);
     return sign;
   }
 
-  /// md5withRSA解签
-  /// [encryptedStr]密文
-  /// [publicKeyStr]公钥
-  static Future<String> md5withRSADecrypt(String encryptedStr, String publicKeyStr) async {
-    String publicKey = await fast_rsa.RSA.convertPublicKeyToPKCS1(publicKeyStr);
-    var decrypt = await fast_rsa.RSA.decryptPKCS1v15(encryptedStr, publicKey);
-    return decrypt;
-  }
-
-  /// md5withRSA验签
+  /// md5withRSA验签，秘钥格式为[pkcs8]
   /// [content]明文
-  /// [encryptedContent]密文
+  /// [signature]签名
   /// [publicKeyStr]公钥
-  static Future<bool> md5withRSAVerify(String content, String encryptedContent, String publicKeyStr) async {
-    String publicKey = await fast_rsa.RSA.convertPublicKeyToPKCS1(publicKeyStr);
-    var md5Content = md5Encrypt(content);
-    var verify = await fast_rsa.RSA.verifyPKCS1v15(md5Content, encryptedContent, fast_rsa.Hash.MD5, publicKey);
+  static Future<bool> md5withRSAVerify(String content, String signature, String publicKeyStr) async {
+    // 初始化公钥
+    String publicKeyString = _transformPem(publicKeyStr);
+    String publicKey = await fast_rsa.RSA.convertPublicKeyToPKCS1(publicKeyString);
+    var verify = await fast_rsa.RSA.verifyPKCS1v15(signature, content, fast_rsa.Hash.MD5, publicKey);
     return verify;
   }
 
@@ -142,7 +133,9 @@ class EncryptUtils {
     var begin = isPublic ? '-----BEGIN PUBLIC KEY-----\n' : "-----BEGIN PRIVATE KEY-----\n";
     var end = isPublic ? '\n-----END PUBLIC KEY-----' : '\n-----END PRIVATE KEY-----';
     // 如果已经是PEM格式的秘钥，直接返回
-    if(str.contains(begin) && str.contains(end)) return str;
+    if (str.contains(begin) && str.contains(end)) return str;
+    // 去掉空格和换行
+    str.replaceAll(' ', '').replaceAll('\n', '');
 
     int splitCount = str.length ~/ 64;
     List<String> strList = [];

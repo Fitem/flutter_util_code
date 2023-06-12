@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
     RouterName.device: '设备Device工具类',
     RouterName.app: 'App工具类',
     RouterName.path: 'Path工具类',
+    RouterName.encrypt: 'Encrypt工具类',
   };
 
   @override

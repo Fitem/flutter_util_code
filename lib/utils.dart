@@ -7,3 +7,4 @@ export 'uuid_utils.dart';
 export 'device_utils.dart';
 export 'app_utils.dart';
 export 'path_utils.dart';
+export 'encrypt_utils.dart';
