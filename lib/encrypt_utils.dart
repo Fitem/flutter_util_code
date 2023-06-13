@@ -3,7 +3,6 @@ import 'dart:typed_data';
 
 import 'package:crypto/crypto.dart';
 import 'package:encrypt/encrypt.dart';
-import 'package:flutter_util_code/utils.dart';
 import 'package:pointycastle/asymmetric/api.dart';
 import 'package:fast_rsa/fast_rsa.dart' as fast_rsa;
 
@@ -19,10 +18,21 @@ class EncryptUtils {
   }
 
   /// RC4加密
-  /// [content] 加密内容
+  /// [content] 明文
   static String rc4Encrypt(String content, String keyStr) {
-    var rc4 = RC4(keyStr);
-    return rc4.encode(content);
+    RC4 rc4 = RC4(keyStr);
+    Uint8List data = Uint8List.fromList(content.codeUnits);
+    Uint8List crypt = rc4.crypt(data);
+    return base64Encode(crypt);
+  }
+
+  /// RC4解密
+  /// [content] 密文
+  static String rc4Decrypt(String content, String keyStr) {
+    RC4 rc4 = RC4(keyStr);
+    Uint8List data = base64Decode(content);
+    Uint8List crypt = rc4.crypt(data);
+    return utf8.decode(crypt);
   }
 
   /// AES加密, 默认[AESMode.ecb]加密方式
@@ -152,104 +162,54 @@ class EncryptUtils {
 }
 
 class RC4 {
-  int i = 0, j = 0;
-
-  List<int> ksa = [];
-
-  RC4(String key, [int dropBytes = 0]) {
-    if (dropBytes % 256 != 0) {
-      throw Exception("Drop Bytes must be multiple of 256, was <$dropBytes>.");
-    }
-    ksa = _makeKey(key, dropBytes);
+  /// 初始化
+  /// [keyStr] key
+  RC4(String keyStr) {
+    Uint8List key = Uint8List.fromList(keyStr.codeUnits);
+    setKey(key);
   }
 
-  List<int> _encryptByte(int i, int j, List<int> S) {
-    i = (i + 1) % 256;
-    j = (j + S[i]) % 256;
-    _swap(S, i, j);
-    int K = S[(S[i] + S[j]) % 256];
-    if (K >= 256) {
-      LogUtils.println("oh noes!");
-    }
-    return [i, j, K];
-  }
+  final Uint8List _s = Uint8List(256);
+  int _i = 0;
+  int _j = 0;
 
-  _swap(List<int> S, int i, int j) {
-    var tmp = S[i];
-    S[i] = S[j];
-    S[j] = tmp;
-  }
-
-  List<int> range(int i) {
-    return List.generate(i, (e) => e);
-  }
-
-  List<int> _makeKey(String key, int dropBytes) {
-    //The key-scheduling algorithm (KSA)
-    List<int> S = range(256);
-    j = 0;
-    for (int i in range(256)) {
-      var asciiCode = key.codeUnitAt(i % key.length);
-      j = (j + S[i] + asciiCode) % 256;
-      _swap(S, i, j);
-    }
-    i = j = 0;
-
-    //Do the RC4-drop[(nbytes)]
-    if (dropBytes > 0) {
-      for (int dropped in range(dropBytes)) {
-        var results = _encryptByte(i, j, S);
-        i = results[0];
-        j = results[1];
-      }
-    }
-    return S;
-  }
-
-  String _crypt(String message) {
-    //The pseudo-random generation algorithm (PRGA)
-    List<int> S = [...ksa]; //make a deep copy of you KSA array, gets modified
-    List<int> combined = [];
-    int i = this.i;
-    int j = this.j;
-    int messageLength = message.length;
-    for (int c = 0; c < messageLength; c++) {
-      var results = _encryptByte(i, j, S);
-      i = results[0];
-      j = results[1];
-      int K = results[2];
-
-      int asciiCode, index;
-      try {
-        asciiCode = message.codeUnitAt(c);
-        index = K ^ asciiCode;
-        combined.add(index);
-      } on RangeError {
-        LogUtils.println(message);
-        throw Exception("Crap");
-      }
-    }
-    String decrypted = String.fromCharCodes(combined);
-    return decrypted;
-  }
-
-  String encode(String message, [bool encodeBase64 = true]) {
-    String encrypted = _crypt(message);
-    if (encodeBase64) {
-      List<int> asciiCodes = encrypted.codeUnits;
-      String base64 = base64Encode(asciiCodes);
-      encrypted = base64;
-    }
-    return encrypted;
-  }
-
-  String decode(String message, [bool encodedBase64 = true]) {
-    if (encodedBase64) {
-      List<int> bytes = base64Decode(message);
-      message = String.fromCharCodes(bytes);
+  void setKey(Uint8List key) {
+    for (int i = 0; i < 256; i++) {
+      _s[i] = i;
     }
 
-    String decrypted = _crypt(message);
-    return decrypted;
+    int j = 0;
+    for (int i = 0; i < 256; i++) {
+      j = (j + _s[i] + key[i % key.length]) % 256;
+      swap(i, j);
+    }
+
+    _i = 0;
+    _j = 0;
+  }
+
+  /// 加密
+  /// [data]数据
+  Uint8List crypt(Uint8List data) {
+    Uint8List result = Uint8List(data.length);
+
+    for (int k = 0; k < data.length; k++) {
+      result[k] = data[k] ^ next();
+    }
+
+    return result;
+  }
+
+  void swap(int i, int j) {
+    int temp = _s[i];
+    _s[i] = _s[j];
+    _s[j] = temp;
+  }
+
+  int next() {
+    _i = (_i + 1) % 256;
+    _j = (_j + _s[_i]) % 256;
+    swap(_i, _j);
+    return _s[(_s[_i] + _s[_j]) % 256];
   }
 }

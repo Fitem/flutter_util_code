@@ -77,9 +77,11 @@ fp2bts3jaD4PsSU=
   }
 
   _handleRC4() {
+    String encrypted = EncryptUtils.rc4Encrypt(content, rc4Key);
     addContent('''RC4加密:
     原文：$content
     加密：${EncryptUtils.rc4Encrypt(content, rc4Key)}
+    解密：${EncryptUtils.rc4Decrypt(encrypted, rc4Key)}
     ''');
   }
 
