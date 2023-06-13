@@ -43,7 +43,7 @@ class PathUtils {
     return directory.path;
   }
 
-  /// 系统下载文件所在目录的路径，仅在 iOS/macOS 上支持
+  /// 应用程序的下载目录路径，仅在 iOS/macOS 上支持
   static Future<String> getDownloadPath() async {
     // 如果不是iOS/macOS系统，则返回空字符串
     if (!_isIOSOrMacOS) return '';
@@ -86,7 +86,7 @@ class PathUtils {
   static Future<List<String>> getAndroidMoviePaths() async =>
       await getAppExternalStoragePaths(type: StorageDirectoryType.movies);
 
-  /// 获取AndroidApp外部存储-音频类型文件的路径
+  /// 获取Android外部存储-音频类型文件的路径
   static Future<List<String>> getAndroidMusicPaths() async =>
       await getAppExternalStoragePaths(type: StorageDirectoryType.music);
 
