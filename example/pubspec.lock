@@ -125,10 +125,10 @@ packages:
     dependency: transitive
     description:
       name: fast_rsa
-      sha256: af31af1a782e2d6025c868a418071112062e80fa84e41c44a95b5f26d00b87b7
+      sha256: "79bc5398e69d226497d926e85fab944e5d07bb8a9dd747129cf7be33009e386d"
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "3.5.3"
+    version: "3.5.7"
   ffi:
     dependency: transitive
     description:
@@ -182,7 +182,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "0.0.5"
+    version: "0.0.6"
   flutter_web_plugins:
     dependency: transitive
     description: flutter

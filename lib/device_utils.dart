@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
@@ -31,15 +33,10 @@ class DeviceUtils {
     Map<String, dynamic> deviceData = await getDeviceData();
     if (kIsWeb) {
       _deviceId = '';
-    } else {
-      _deviceId = switch (defaultTargetPlatform) {
-        TargetPlatform.android => await _getAndroidId(),
-        TargetPlatform.iOS => deviceData['identifierForVendor'],
-        TargetPlatform.linux => '',
-        TargetPlatform.windows => '',
-        TargetPlatform.macOS => '',
-        TargetPlatform.fuchsia => '',
-      };
+    } else if (Platform.isAndroid) {
+      _deviceId = await _getAndroidId();
+    } else if (Platform.isIOS) {
+      _deviceId = deviceData['identifierForVendor'];
     }
     // 如果获取不到，则生成一个UUID
     _deviceId = _getUniqueDeviceId(_deviceId);
@@ -59,16 +56,12 @@ class DeviceUtils {
     Map<String, dynamic> deviceData = await getDeviceData();
     if (kIsWeb) {
       return '';
-    } else {
-      return switch (defaultTargetPlatform) {
-        TargetPlatform.android => '${deviceData['version.sdkInt']}',
-        TargetPlatform.iOS => '${deviceData['systemVersion']}',
-        TargetPlatform.linux => '',
-        TargetPlatform.windows => '',
-        TargetPlatform.macOS => '',
-        TargetPlatform.fuchsia => '',
-      };
+    } else if (Platform.isAndroid) {
+      return '${deviceData['version.sdkInt']}';
+    } else if (Platform.isIOS) {
+      return '${deviceData['systemVersion']}';
     }
+    return '';
   }
 
   /// 获取设备系统名称
@@ -76,16 +69,12 @@ class DeviceUtils {
     Map<String, dynamic> deviceData = await getDeviceData();
     if (kIsWeb) {
       return deviceData['browserName'];
-    } else {
-      return switch (defaultTargetPlatform) {
-        TargetPlatform.android => deviceData['display'],
-        TargetPlatform.iOS => deviceData['systemName'],
-        TargetPlatform.linux => '',
-        TargetPlatform.windows => '',
-        TargetPlatform.macOS => '',
-        TargetPlatform.fuchsia => '',
-      };
+    } else if (Platform.isAndroid) {
+      return deviceData['display'];
+    } else if (Platform.isIOS) {
+      return deviceData['systemName'];
     }
+    return '';
   }
 
   /// 设备品牌
@@ -93,15 +82,12 @@ class DeviceUtils {
     Map<String, dynamic> deviceData = await getDeviceData();
     if (kIsWeb) {
       return '';
+    } else if (Platform.isAndroid) {
+      return deviceData['brand'];
+    } else if (Platform.isIOS) {
+      return deviceData['name'];
     } else {
-      return switch (defaultTargetPlatform) {
-        TargetPlatform.android => deviceData['brand'],
-        TargetPlatform.iOS => deviceData['name'],
-        TargetPlatform.linux => '',
-        TargetPlatform.windows => '',
-        TargetPlatform.macOS => '',
-        TargetPlatform.fuchsia => '',
-      };
+      return '';
     }
   }
 
@@ -133,14 +119,27 @@ class DeviceUtils {
     if (kIsWeb) {
       _deviceData = _readWebBrowserInfo(await deviceInfoPlugin.webBrowserInfo);
     } else {
-      _deviceData = switch (defaultTargetPlatform) {
-        TargetPlatform.android => _readAndroidDeviceInfo(await deviceInfoPlugin.androidInfo),
-        TargetPlatform.iOS => _readIosDeviceInfo(await deviceInfoPlugin.iosInfo),
-        TargetPlatform.linux => _readLinuxDeviceInfo(await deviceInfoPlugin.linuxInfo),
-        TargetPlatform.windows => _readWindowsDeviceInfo(await deviceInfoPlugin.windowsInfo),
-        TargetPlatform.macOS => _readMacOsDeviceInfo(await deviceInfoPlugin.macOsInfo),
-        TargetPlatform.fuchsia => <String, dynamic>{'Error:': 'Fuchsia platform isn\'t supported'},
-      };
+      switch (defaultTargetPlatform) {
+        case TargetPlatform.android:
+          _deviceData = _readAndroidDeviceInfo(await deviceInfoPlugin.androidInfo);
+          break;
+        case TargetPlatform.iOS:
+          _deviceData = _readIosDeviceInfo(await deviceInfoPlugin.iosInfo);
+          break;
+        case TargetPlatform.linux:
+          _deviceData = _readLinuxDeviceInfo(await deviceInfoPlugin.linuxInfo);
+          break;
+        case TargetPlatform.macOS:
+          _deviceData = _readMacOsDeviceInfo(await deviceInfoPlugin.macOsInfo);
+          break;
+        case TargetPlatform.windows:
+          _deviceData = _readWindowsDeviceInfo(await deviceInfoPlugin.windowsInfo);
+          break;
+        case TargetPlatform.fuchsia:
+        default:
+          _deviceData = <String, dynamic>{'Error:': 'Fuchsia platform isn\'t supported'};
+          break;
+      }
     }
     return _deviceData!;
   }
