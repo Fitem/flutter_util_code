@@ -2,6 +2,9 @@
 
 Language: [English](CHANGELOG.md) | 简体中文
 
+## 0.0.7
+- 更新 Flutter 依赖，设置 Flutter >=3.3.0 和 Dart >=2.18.0 <4.0.0
+
 ## 0.0.6
 - 新增 EncryptUtils: 加密工具类
 

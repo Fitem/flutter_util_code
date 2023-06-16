@@ -15,9 +15,9 @@ dependencies：
   flutter_util_code: ^latest_version
 ~~~
 
-### 系统环境
-- Flutter: 3.10.2
-- Dart: 3.0.2
+### 支持环境
+- sdk: ">=2.18.0 <4.0.0"
+- flutter: ">=3.3.0"
 
 ### 工具类整理（后续继续更新中）
 - [x] [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart)：日志工具类

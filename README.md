@@ -15,9 +15,9 @@ dependencies：
   flutter_util_code: ^latest_version
 ~~~
 
-### System Environment
-- Flutter: 3.10.2
-- Dart: 3.0.2
+### Support Environment
+- sdk: ">=2.18.0 <4.0.0"
+- flutter: ">=3.3.0"
 
 ### Utils（Continue to update later）
 - [x] [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart)：Logging utility class
