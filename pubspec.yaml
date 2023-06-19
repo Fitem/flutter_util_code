@@ -31,6 +31,8 @@ dependencies:
   pointycastle: ^3.7.3
   # 加密: md5withRSA签名
   fast_rsa: ^3.5.7
+  # URL跳转
+  url_launcher: ^6.1.11
 
 dev_dependencies:
   flutter_test:
