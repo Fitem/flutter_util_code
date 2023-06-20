@@ -26,10 +26,7 @@ class AppPageState<AppPage> extends State {
         height: double.infinity,
         child: Column(
           children: [
-            ElevatedButton(onPressed: () async => addContent('AppName: ${await AppUtils.getAppName()}'), child: const Text('获取App名称')),
-            ElevatedButton(onPressed: () async => addContent('PackageName: ${await AppUtils.getPackageName()}'), child: const Text('获取App包名')),
-            ElevatedButton(onPressed: () async => addContent('VersionName: ${await AppUtils.getVersionName()}'), child: const Text('获取App版本名称')),
-            ElevatedButton(onPressed: () async => addContent('VersionNumber: ${await AppUtils.getVersionNumber()}'), child: const Text('获取App版本号')),
+            ElevatedButton(onPressed: () async => addContent(), child: const Text('获取App信息')),
             const Spacer(),
             Expanded(
                 flex: 2,
@@ -42,8 +39,15 @@ class AppPageState<AppPage> extends State {
   }
 
   /// 添加内容
-  void addContent(String content) {
-    globalKey.currentState?.addContent(content);
+  Future<void> addContent() async {
+    StringBuffer sb = StringBuffer();
+    sb.write('App名称: ${await AppUtils.getAppName()} \n');
+    sb.write('App包名: ${await AppUtils.getPackageName()} \n');
+    sb.write('App版本名称: ${await AppUtils.getVersionName()} \n');
+    sb.write('App版本号: ${await AppUtils.getVersionNumber()} \n');
+    sb.write('App构建签名: ${await AppUtils.getBuildSignature()} \n');
+    sb.write('App安装商店: ${await AppUtils.getInstallerStore()} \n');
+    globalKey.currentState?.addContent(sb.toString());
   }
 
 }
