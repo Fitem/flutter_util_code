@@ -6,6 +6,7 @@ import 'package:flutter_util_code_example/function/log_page.dart';
 import 'package:flutter_util_code_example/function/path_page.dart';
 import 'package:flutter_util_code_example/function/shared_prefs/shared_prefs_page.dart';
 import 'package:flutter_util_code_example/function/toast_page.dart';
+import 'package:flutter_util_code_example/function/url_launcher_page.dart';
 import 'package:flutter_util_code_example/function/uuid_page.dart';
 import 'package:flutter_util_code_example/router/router_name.dart';
 import 'package:get/get.dart';
@@ -62,6 +63,11 @@ class RouterPage {
     GetPage(
       name: RouterName.encrypt,
       page: () => const EncryptPage(),
+    ),
+    /// UrlLauncher工具类页
+    GetPage(
+      name: RouterName.urlLauncher,
+      page: () => const UrlLauncherPage(),
     ),
   ];
 }

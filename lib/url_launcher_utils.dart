@@ -1,7 +1,13 @@
+import 'dart:io';
+
+import 'package:flutter_util_code/utils.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 ///  Name: URL跳转工具类
 ///  基于 [url_launcher](https://pub.dev/packages/url_launcher)
+///  *注意使用此功能需要添加权限*
+///  在Android上，需要在AndroidManifest.xml中添加：<uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+///  在iOS上，需要在Info.plist中添加：<key>LSApplicationQueriesSchemes</key> <array><string>sms</string><string>tel</string></array>
 ///  Created by Fitem on 2023/6/19
 class UrlLauncherUtils {
   /// 浏览器打开url
@@ -48,7 +54,7 @@ class UrlLauncherUtils {
   static Future<bool> sendSMS(String phoneNumber, {String content = ''}) async {
     if (!await onCanLaunchUrl('sms:$phoneNumber')) return false;
     return await launchUrl(Uri(
-      scheme: 'tel',
+      scheme: 'sms',
       path: phoneNumber,
       queryParameters: {'body': content},
     ));
@@ -70,13 +76,18 @@ class UrlLauncherUtils {
     ));
   }
 
-  /// 打开文件
-  /// [filePath] 文件路径   /storage/emulated/0/Download/xxx.pdf
-  /// 若不支持打开文件则返回false
-  static Future<bool> openFile(String filePath) async {
-    if (!await onCanLaunchUrl('file://$filePath')) return false;
-    return await launchUrl(Uri(scheme: 'file', path: filePath));
-  }
+  // /// 打开文件
+  // /// [filePath] 文件路径   /storage/emulated/0/Download/xxx.pdf
+  // /// 若不支持打开文件则返回false
+  // static Future<bool> openFile(String filePath) async {
+  //   if (!File(filePath).existsSync()) {
+  //     LogUtils.println('文件不存在');
+  //     return false;
+  //   }
+  //   Uri uri = Uri(scheme: 'file', path: filePath);
+  //   if (!await onCanLaunchUrl(uri.toFilePath())) return false;
+  //   return await launchUrl(uri);
+  // }
 
   /// 是否支持该url打开
   /// [url] 跳转的url

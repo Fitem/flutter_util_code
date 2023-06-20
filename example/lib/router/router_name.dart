@@ -19,4 +19,6 @@ class RouterName {
   static String path = "/path";
   /// Encrypt工具类
   static String encrypt = "/encrypt";
+  /// UrlLauncher工具类
+  static String urlLauncher = "/url_launcher";
 }
