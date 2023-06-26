@@ -2,6 +2,9 @@
 
 Language: English | [简体中文](CHANGELOG-ZH.md)
 
+## 0.0.8
+- Add UrlLauncherUtils: URL launcher utility class
+
 ## 0.0.7 
 - Update Flutter dependencies, set Flutter >=3.3.0 and Dart to >=2.18.0 <4.0.0
 
