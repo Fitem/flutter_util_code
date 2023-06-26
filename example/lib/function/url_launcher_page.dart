@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -32,10 +33,15 @@ class UrlLauncherPageState<UrlLauncherPage> extends State {
             _buildButton('浏览器打开url', () => UrlLauncherUtils.launchInBrowser(httpUrl)),
             _buildButton('非浏览器第三方应用打开url', () => UrlLauncherUtils.launchInNonBrowser(httpUrl)),
             _buildButton('WebView打开url', () => UrlLauncherUtils.launchInApp(httpUrl)),
+            _buildButton('关闭WebView', () {
+              UrlLauncherUtils.launchInApp(httpUrl);
+              Timer(const Duration(seconds: 3), () => UrlLauncherUtils.onCloseInAppWebView());
+              return Future.value(true);
+            }),
             _buildButton('打电话', () => UrlLauncherUtils.makePhoneCall(phoneNumber)),
             _buildButton('发短信', () => UrlLauncherUtils.sendSMS(phoneNumber, content: '短信内容')),
             _buildButton('发送邮件', () => UrlLauncherUtils.sendEmail(email, subject: '邮件主题', content: '邮件内容')),
-            // _buildButton('打开文件', openFile),
+            _buildButton('打开文件', openFile),
           ],
         ),
       ),
@@ -43,7 +49,7 @@ class UrlLauncherPageState<UrlLauncherPage> extends State {
   }
 
   /// 通用按钮
-  Widget _buildButton(String text, Future<bool> Function() onPressed) {
+  Widget _buildButton(String text, Future<dynamic> Function() onPressed) {
     return ElevatedButton(
         onPressed: () async {
           bool result = await onPressed();
@@ -53,11 +59,15 @@ class UrlLauncherPageState<UrlLauncherPage> extends State {
   }
 
   /// 打开文件
-  // Future<bool> openFile() async {
-  //   final String tempFilePath = '${await PathUtils.getAppSupportPath()}/temp.txt';
-  //   final File testFile = File(tempFilePath);
-  //   await testFile.writeAsString('Hello, world!');
-  //   filePath = testFile.absolute.path;
-  //   return UrlLauncherUtils.openFile(filePath);
-  // }
+  Future<bool> openFile() async {
+    final String tempFilePath = await PathUtils.getAppSupportPath();
+    String filePath = '$tempFilePath/temp.pdf';
+    if(!File(tempFilePath).existsSync()) {
+      Directory(tempFilePath).createSync(recursive: true);
+    }
+    final File testFile = File(filePath);
+    await testFile.writeAsString('Hello, world!');
+    filePath = testFile.absolute.path;
+    return UrlLauncherUtils.openFile(filePath);
+  }
 }
