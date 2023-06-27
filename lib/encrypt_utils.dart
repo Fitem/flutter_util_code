@@ -38,10 +38,11 @@ class EncryptUtils {
   /// AES加密, 默认[AESMode.ecb]加密方式
   /// [content] 明文
   /// [aesKey] 秘钥
-  static aesEncrypt(String content, String keyStr) {
+  static aesEncrypt(String content, String keyStr, [AESModeType type = AESModeType.ecb]) {
     final key = Key.fromUtf8(keyStr);
     final iv = IV.fromLength(16);
-    final encryptor = Encrypter(AES(key, mode: AESMode.ecb));
+    AESMode mode = AESMode.values.firstWhere((element) => element.name == type.name, orElse: () => AESMode.ecb);
+    final encryptor = Encrypter(AES(key, mode: mode));
     final encrypted = encryptor.encrypt(content, iv: iv);
     return encrypted.base64;
   }
@@ -49,10 +50,11 @@ class EncryptUtils {
   /// AES解密, 默认[AESMode.ecb]加密方式
   /// [content] 密文
   /// [aesKey] 秘钥
-  static aesDecrypt(String content, String keyStr) {
+  static aesDecrypt(String content, String keyStr, [AESModeType type = AESModeType.ecb]) {
     final key = Key.fromUtf8(keyStr);
     final iv = IV.fromLength(16);
-    final encryptor = Encrypter(AES(key, mode: AESMode.ecb));
+    AESMode mode = AESMode.values.firstWhere((element) => element.name == type.name, orElse: () => AESMode.ecb);
+    final encryptor = Encrypter(AES(key, mode: mode));
     final encrypted = Encrypted.fromBase64(content);
     final decrypted = encryptor.decrypt(encrypted, iv: iv);
     return decrypted;
@@ -212,4 +214,14 @@ class RC4 {
     swap(_i, _j);
     return _s[(_s[_i] + _s[_j]) % 256];
   }
+}
+
+enum AESModeType {
+  cbc,
+  cfb64,
+  ctr,
+  ecb,
+  ofb64Gctr,
+  ofb64,
+  sic,
 }
