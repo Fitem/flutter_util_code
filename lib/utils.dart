@@ -9,3 +9,4 @@ export 'app_utils.dart';
 export 'path_utils.dart';
 export 'encrypt_utils.dart';
 export 'url_launcher_utils.dart';
+export 'null_safety_utils.dart';
