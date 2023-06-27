@@ -2,6 +2,9 @@
 
 Language: English | [简体中文](CHANGELOG-ZH.md)
 
+## 0.0.9
+- Add NullSafetyUtils: Null safety utility class
+
 ## 0.0.8
 - Add UrlLauncherUtils: URL launcher utility class
 

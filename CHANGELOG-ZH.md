@@ -2,6 +2,9 @@
 
 Language: [English](CHANGELOG.md) | 简体中文
 
+## 0.0.9
+- 新增 NullSafetyUtils: 空安全工具类
+
 ## 0.0.8
 - 新增 UrlLauncherUtils: URL跳转工具类
 
