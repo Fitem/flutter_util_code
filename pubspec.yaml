@@ -33,6 +33,8 @@ dependencies:
   fast_rsa: ^3.5.7
   # URL跳转
   url_launcher: ^6.1.11
+  # 分享
+  share_plus: ^7.0.2
 
 dev_dependencies:
   flutter_test:
