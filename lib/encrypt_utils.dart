@@ -85,7 +85,7 @@ class EncryptUtils {
     return decrypted;
   }
 
-  /// sha256withRSA签名，秘钥格式为[pkcs8]
+  /// SHA256withRSA签名，秘钥格式为[pkcs8]
   /// [content]明文
   /// [privateKeyStr]私钥
   static String sha256withRSASign(String content, String privateKeyStr) {
@@ -99,7 +99,7 @@ class EncryptUtils {
     return sign;
   }
 
-  /// sha256withRSA验签，秘钥格式为[pkcs8]
+  /// SHA256withRSA验签，秘钥格式为[pkcs8]
   /// [content]明文
   /// [signature]签名
   /// [publicKeyStr]公钥
@@ -115,7 +115,7 @@ class EncryptUtils {
     return verify;
   }
 
-  /// md5withRSA签名，秘钥格式为[pkcs8]
+  /// MD5withRSA签名，秘钥格式为[pkcs8]
   /// [content]明文
   /// [privateKeyStr]私钥
   static Future<String> md5withRSASign(String content, String privateKeyStr) async {
@@ -126,7 +126,7 @@ class EncryptUtils {
     return sign;
   }
 
-  /// md5withRSA验签，秘钥格式为[pkcs8]
+  /// MD5withRSA验签，秘钥格式为[pkcs8]
   /// [content]明文
   /// [signature]签名
   /// [publicKeyStr]公钥
