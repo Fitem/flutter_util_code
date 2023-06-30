@@ -30,6 +30,7 @@ class SharePageState<SharePage> extends State {
             _buildButton(
               '分享图片-path',
               () async {
+                // 拷贝图片
                 final data = await rootBundle.load('assets/flutter_logo.png');
                 final Uint8List bytes = data.buffer.asUint8List();
                 final String tempFilePath = await PathUtils.getAppSupportPath();
@@ -39,47 +40,39 @@ class SharePageState<SharePage> extends State {
                 }
                 final File imageFile = File(filePath);
                 await imageFile.writeAsBytes(bytes);
+                // 获取图片路径
                 filePath = imageFile.absolute.path;
-                return ShareUtils.shareImage(
-                  name: 'flutter_logo.png',
-                  path: filePath,
-                  subject: '分享主题',
-                  text: '分享内容',
-                );
+                return ShareUtils.shareImage(name: 'flutter_logo.png', path: filePath);
               },
             ),
             _buildButton(
               '分享图片-bytes',
               () async {
+                // 获取图片bytes
                 final data = await rootBundle.load('assets/flutter_logo.png');
-                return ShareUtils.shareImage(
-                  name: 'flutter_logo.png',
-                  bytes: data.buffer.asUint8List(),
-                  mineType: 'image/png',
-                  subject: '分享主题',
-                  text: '分享内容',
-                );
+                final Uint8List bytes = data.buffer.asUint8List();
+                return ShareUtils.shareImage(name: 'flutter_logo.png', bytes: bytes, mineType: 'image/png');
               },
             ),
             _buildButton(
               '分享多张图片',
               () async {
+                // 获取多少张图片bytes
                 final data1 = await rootBundle.load('assets/flutter_logo.png');
                 final data2 = await rootBundle.load('assets/ic_launcher.png');
+                final bytes1 = data1.buffer.asUint8List();
+                final bytes2 = data2.buffer.asUint8List();
                 ShareFile file1 =
-                    ShareFile(name: 'flutter_logo.png', bytes: data1.buffer.asUint8List(), mineType: 'image/png');
+                    ShareFile(name: 'flutter_logo.png', bytes: bytes1, mineType: 'image/png');
                 ShareFile file2 =
-                    ShareFile(name: 'ic_launcher.png', bytes: data2.buffer.asUint8List(), mineType: 'image/png');
-                return ShareUtils.shareImages(
-                  images: [file1, file2],
-                  subject: '分享主题',
-                  text: '分享内容',
-                );
+                    ShareFile(name: 'ic_launcher.png', bytes: bytes2, mineType: 'image/png');
+                return ShareUtils.shareImages(images: [file1, file2]);
               },
             ),
             _buildButton(
               '分享文件-path',
               () async {
+                // 创建文件
                 final String tempFilePath = await PathUtils.getAppSupportPath();
                 String filePath = '$tempFilePath/temp.txt';
                 if (!File(tempFilePath).existsSync()) {
@@ -87,18 +80,15 @@ class SharePageState<SharePage> extends State {
                 }
                 final File testFile = File(filePath);
                 await testFile.writeAsString('Hello, world!');
+                // 获取文件路径
                 filePath = testFile.absolute.path;
-                return ShareUtils.shareFile(
-                  name: 'temp.txt',
-                  path: filePath,
-                  subject: '分享主题',
-                  text: '分享内容',
-                );
+                return ShareUtils.shareFile(name: 'temp.txt', path: filePath);
               },
             ),
             _buildButton(
               '分享文件-bytes',
               () async {
+                // 创建文件
                 final String tempFilePath = await PathUtils.getAppSupportPath();
                 String filePath = '$tempFilePath/temp.txt';
                 if (!File(tempFilePath).existsSync()) {
@@ -106,19 +96,15 @@ class SharePageState<SharePage> extends State {
                 }
                 final File testFile = File(filePath);
                 await testFile.writeAsString('Hello, world!');
-                filePath = testFile.absolute.path;
-                return ShareUtils.shareFile(
-                  name: 'temp.txt',
-                  bytes: testFile.readAsBytesSync(),
-                  mineType: 'text/plain',
-                  subject: '分享主题',
-                  text: '分享内容',
-                );
+                // 获取文件bytes
+                Uint8List bytes = await testFile.readAsBytes();
+                return ShareUtils.shareFile(name: 'temp.html', bytes: bytes, mineType: 'text/html');
               },
             ),
             _buildButton(
-              '分享个文件',
+              '分享多个文件',
               () async {
+                // 创建多个文件
                 final String tempFilePath = await PathUtils.getAppSupportPath();
                 String filePath1 = '$tempFilePath/temp1.txt';
                 String filePath2 = '$tempFilePath/temp2.txt';
@@ -129,16 +115,13 @@ class SharePageState<SharePage> extends State {
                 final File testFile2 = File(filePath2);
                 await testFile1.writeAsString('Hello, world!');
                 await testFile2.writeAsString('Hello, world!');
+                // 获取文件路径
                 filePath1 = testFile1.absolute.path;
                 filePath2 = testFile2.absolute.path;
-                return ShareUtils.shareFiles(
-                  files: [
-                    ShareFile(name: 'temp1.txt', path: filePath1),
-                    ShareFile(name: 'temp2.txt', path: filePath2),
-                  ],
-                  subject: '分享主题',
-                  text: '分享内容',
-                );
+                return ShareUtils.shareFiles(files: [
+                  ShareFile(name: 'temp1.txt', path: filePath1),
+                  ShareFile(name: 'temp2.txt', path: filePath2),
+                ]);
               },
             ),
           ],

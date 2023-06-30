@@ -21,4 +21,6 @@ class RouterName {
   static String encrypt = "/encrypt";
   /// UrlLauncher工具类
   static String urlLauncher = "/url_launcher";
+  /// Share工具类
+  static String share = "/share";
 }

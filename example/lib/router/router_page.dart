@@ -1,9 +1,11 @@
+import 'package:flutter_util_code/share_utils.dart';
 import 'package:flutter_util_code_example/function/app_page.dart';
 import 'package:flutter_util_code_example/function/device_page.dart';
 import 'package:flutter_util_code_example/function/encrypted_page.dart';
 import 'package:flutter_util_code_example/function/home_page.dart';
 import 'package:flutter_util_code_example/function/log_page.dart';
 import 'package:flutter_util_code_example/function/path_page.dart';
+import 'package:flutter_util_code_example/function/share_page.dart';
 import 'package:flutter_util_code_example/function/shared_prefs/shared_prefs_page.dart';
 import 'package:flutter_util_code_example/function/toast_page.dart';
 import 'package:flutter_util_code_example/function/url_launcher_page.dart';
@@ -68,6 +70,11 @@ class RouterPage {
     GetPage(
       name: RouterName.urlLauncher,
       page: () => const UrlLauncherPage(),
+    ),
+    /// Share工具类页
+    GetPage(
+      name: RouterName.share,
+      page: () => const SharePage(),
     ),
   ];
 }

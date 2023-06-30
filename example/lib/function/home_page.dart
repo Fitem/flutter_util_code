@@ -8,7 +8,7 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
 
   final Map<String, String> _routerMap = {
-    RouterName.log: '日志工具类',
+    RouterName.log: 'Log工具类',
     RouterName.sharedPreference: 'SharedPreference工具类',
     RouterName.toast: 'Toast工具类',
     RouterName.uuid: 'UUID工具类',
@@ -17,6 +17,7 @@ class HomePage extends StatelessWidget {
     RouterName.path: 'Path工具类',
     RouterName.encrypt: 'Encrypt工具类',
     RouterName.urlLauncher: 'UrlLauncher工具类',
+    RouterName.share: 'Share工具类',
   };
 
   @override
