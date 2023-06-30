@@ -2,6 +2,9 @@
 
 Language: English | [简体中文](CHANGELOG-ZH.md)
 
+## 0.1.0
+- Add ShareUtils: Share utility class
+
 ## 0.0.9
 - Add NullSafetyUtils: Null safety utility class
 
