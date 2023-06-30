@@ -43,8 +43,8 @@ class ShareUtils {
   /// [images]图片列表
   /// [text]分享内容
   /// [subject]分享主题
-  static Future<bool> shareImages(
-    List<ShareFile> images, {
+  static Future<bool> shareImages({
+    required List<ShareFile> images,
     String? text,
     String? subject,
   }) async {
@@ -78,19 +78,19 @@ class ShareUtils {
   }
 
   /// 分享多个文件
-  /// [shareFiles]文件列表
+  /// [files]文件列表
   /// [name]文件名称
   /// [mineType]文件类型
-  static Future<bool> shareFiles(
-    List<ShareFile> shareFiles, {
+  static Future<bool> shareFiles({
+    required List<ShareFile> files,
     String? text,
     String? subject,
   }) async {
-    final files = <XFile>[];
-    for (var i = 0; i < shareFiles.length; i++) {
-      files.add(_createFile(shareFiles[i].name, shareFiles[i].path, shareFiles[i].bytes, shareFiles[i].mineType));
+    final list = <XFile>[];
+    for (var i = 0; i < files.length; i++) {
+      list.add(_createFile(files[i].name, files[i].path, files[i].bytes, files[i].mineType));
     }
-    ShareResult result = await Share.shareXFiles(files, text: text, subject: subject);
+    ShareResult result = await Share.shareXFiles(list, text: text, subject: subject);
     return result.status == ShareResultStatus.success;
   }
 
