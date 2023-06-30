@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:flutter_util_code/utils.dart';
 import 'package:share_plus/share_plus.dart';
 
 ///  Name: 分享工具类
@@ -18,22 +20,20 @@ class ShareUtils {
   }
 
   /// 分享图片
-  /// [path] 与 [bytes] + [mineType] 二选一，不符合则抛出 [FormatException] 异常
+  /// [path] 与 [bytes] 二选一，不符合则抛出 [FormatException] 异常
   /// [name]图片名称
   /// [path]图片路径
   /// [bytes]图片字节
-  /// [mineType]图片类型
   /// [text]分享内容
   /// [subject]分享主题
   static Future<bool> shareImage({
-    String? name,
+    required String name,
     String? path,
     Uint8List? bytes,
-    String? mineType,
     String? text,
     String? subject,
   }) async {
-    XFile file = _createFile(name, path, bytes, mineType);
+    XFile file = await _createFile(name, path, bytes);
     final files = <XFile>[file];
     ShareResult result = await Share.shareXFiles(files, text: text, subject: subject);
     return result.status == ShareResultStatus.success;
@@ -43,35 +43,34 @@ class ShareUtils {
   /// [images]图片列表
   /// [text]分享内容
   /// [subject]分享主题
-  static Future<bool> shareImages({
-    required List<ShareFile> images,
+  static Future<bool> shareImages(
+    List<ShareFile> images, {
     String? text,
     String? subject,
   }) async {
     final files = <XFile>[];
     for (var i = 0; i < images.length; i++) {
-      files.add(_createFile(images[i].name, images[i].path, images[i].bytes, images[i].mineType));
+      files.add(await _createFile(images[i].name, images[i].path, images[i].bytes));
     }
     ShareResult result = await Share.shareXFiles(files, text: text, subject: subject);
     return result.status == ShareResultStatus.success;
   }
 
   /// 分享文件
-  /// [path] 与 [bytes] + [mineType] 二选一，不符合则抛出 [FormatException] 异常
+  /// [path] 与 [bytes] 二选一，不符合则抛出 [FormatException] 异常
   /// [name]文件名称
   /// [path]文件路径
   /// [bytes]文件字节
-  /// [mineType]文件类型
-  /// [mineType]文件类型
+  /// [text]分享内容
+  /// [subject]分享主题
   static Future<bool> shareFile({
-    String? name,
+    required String name,
     String? path,
     Uint8List? bytes,
-    String? mineType,
     String? text,
     String? subject,
   }) async {
-    XFile file = _createFile(name, path, bytes, mineType);
+    XFile file = await _createFile(name, path, bytes);
     final files = <XFile>[file];
     ShareResult result = await Share.shareXFiles(files, text: text, subject: subject);
     return result.status == ShareResultStatus.success;
@@ -79,36 +78,38 @@ class ShareUtils {
 
   /// 分享多个文件
   /// [files]文件列表
-  /// [name]文件名称
-  /// [mineType]文件类型
-  static Future<bool> shareFiles({
-    required List<ShareFile> files,
+  /// [text]分享内容
+  /// [subject]分享主题
+  static Future<bool> shareFiles(
+    List<ShareFile> files, {
     String? text,
     String? subject,
   }) async {
     final list = <XFile>[];
     for (var i = 0; i < files.length; i++) {
-      list.add(_createFile(files[i].name, files[i].path, files[i].bytes, files[i].mineType));
+      list.add(await _createFile(files[i].name, files[i].path, files[i].bytes));
     }
     ShareResult result = await Share.shareXFiles(list, text: text, subject: subject);
     return result.status == ShareResultStatus.success;
   }
 
   /// 创建XFile文件
-  /// [path] 与 [bytes] + [mineType] 二选一，不符合则抛出 [FormatException] 异常
+  /// [path] 与 [bytes] 二选一，不符合则抛出 [FormatException] 异常
   /// [name]文件名称
   /// [path]文件路径
   /// [bytes]文件字节
-  /// [mineType]文件类型
-  static XFile _createFile(String? name, String? path, Uint8List? bytes, String? mineType) {
+  static Future<XFile> _createFile(String name, String? path, Uint8List? bytes) async {
     if (path != null) {
       return XFile(path, name: name);
     } else if (bytes != null) {
-      if (mineType != null) {
-        return XFile.fromData(bytes, name: name, mimeType: mineType);
-      } else {
-        throw const FormatException('mineType must be not null');
-      }
+      // 获取缓存目录
+      final String tempFilePath = await PathUtils.getAppCachePath();
+      final String path = '$tempFilePath/$name';
+      // 写入文件
+      final file = File(path);
+      await file.writeAsBytes(bytes);
+      // 根据文件路径创建XFile
+      return XFile(path, name: name);
     } else {
       throw const FormatException('path or bytes must be not null');
     }
@@ -117,15 +118,13 @@ class ShareUtils {
 
 /// 分享文件对象
 class ShareFile {
+  String name; // 文件名称
   String? path; // 文件路径
   Uint8List? bytes; // 文件bytes
-  String? mineType; // 文件类型
-  String? name; // 文件名称
 
   ShareFile({
+    required this.name,
     this.path,
     this.bytes,
-    this.mineType,
-    this.name,
   });
 }

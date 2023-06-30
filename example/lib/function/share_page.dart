@@ -33,15 +33,11 @@ class SharePageState<SharePage> extends State {
                 // 拷贝图片
                 final data = await rootBundle.load('assets/flutter_logo.png');
                 final Uint8List bytes = data.buffer.asUint8List();
-                final String tempFilePath = await PathUtils.getAppSupportPath();
+                final String tempFilePath = await PathUtils.getAppCachePath();
                 String filePath = '$tempFilePath/flutter_logo.png';
-                if (!File(tempFilePath).existsSync()) {
-                  Directory(tempFilePath).createSync(recursive: true);
-                }
                 final File imageFile = File(filePath);
                 await imageFile.writeAsBytes(bytes);
                 // 获取图片路径
-                filePath = imageFile.absolute.path;
                 return ShareUtils.shareImage(name: 'flutter_logo.png', path: filePath);
               },
             ),
@@ -51,7 +47,7 @@ class SharePageState<SharePage> extends State {
                 // 获取图片bytes
                 final data = await rootBundle.load('assets/flutter_logo.png');
                 final Uint8List bytes = data.buffer.asUint8List();
-                return ShareUtils.shareImage(name: 'flutter_logo.png', bytes: bytes, mineType: 'image/png');
+                return ShareUtils.shareImage(name: 'flutter_logo.png', bytes: bytes);
               },
             ),
             _buildButton(
@@ -62,26 +58,19 @@ class SharePageState<SharePage> extends State {
                 final data2 = await rootBundle.load('assets/ic_launcher.png');
                 final bytes1 = data1.buffer.asUint8List();
                 final bytes2 = data2.buffer.asUint8List();
-                ShareFile file1 =
-                    ShareFile(name: 'flutter_logo.png', bytes: bytes1, mineType: 'image/png');
-                ShareFile file2 =
-                    ShareFile(name: 'ic_launcher.png', bytes: bytes2, mineType: 'image/png');
-                return ShareUtils.shareImages(images: [file1, file2]);
+                ShareFile file1 = ShareFile(name: 'flutter_logo.png', bytes: bytes1);
+                ShareFile file2 = ShareFile(name: 'ic_launcher.png', bytes: bytes2);
+                return ShareUtils.shareImages([file1, file2]);
               },
             ),
             _buildButton(
               '分享文件-path',
               () async {
-                // 创建文件
-                final String tempFilePath = await PathUtils.getAppSupportPath();
+                // 拷贝文件
+                final String tempFilePath = await PathUtils.getAppCachePath();
                 String filePath = '$tempFilePath/temp.txt';
-                if (!File(tempFilePath).existsSync()) {
-                  Directory(tempFilePath).createSync(recursive: true);
-                }
                 final File testFile = File(filePath);
                 await testFile.writeAsString('Hello, world!');
-                // 获取文件路径
-                filePath = testFile.absolute.path;
                 return ShareUtils.shareFile(name: 'temp.txt', path: filePath);
               },
             ),
@@ -89,28 +78,22 @@ class SharePageState<SharePage> extends State {
               '分享文件-bytes',
               () async {
                 // 创建文件
-                final String tempFilePath = await PathUtils.getAppSupportPath();
+                final String tempFilePath = await PathUtils.getAppCachePath();
                 String filePath = '$tempFilePath/temp.txt';
-                if (!File(tempFilePath).existsSync()) {
-                  Directory(tempFilePath).createSync(recursive: true);
-                }
                 final File testFile = File(filePath);
                 await testFile.writeAsString('Hello, world!');
                 // 获取文件bytes
                 Uint8List bytes = await testFile.readAsBytes();
-                return ShareUtils.shareFile(name: 'temp.html', bytes: bytes, mineType: 'text/html');
+                return ShareUtils.shareFile(name: 'temp.html', bytes: bytes);
               },
             ),
             _buildButton(
               '分享多个文件',
               () async {
                 // 创建多个文件
-                final String tempFilePath = await PathUtils.getAppSupportPath();
+                final String tempFilePath = await PathUtils.getAppCachePath();
                 String filePath1 = '$tempFilePath/temp1.txt';
                 String filePath2 = '$tempFilePath/temp2.txt';
-                if (!File(tempFilePath).existsSync()) {
-                  Directory(tempFilePath).createSync(recursive: true);
-                }
                 final File testFile1 = File(filePath1);
                 final File testFile2 = File(filePath2);
                 await testFile1.writeAsString('Hello, world!');
@@ -118,7 +101,7 @@ class SharePageState<SharePage> extends State {
                 // 获取文件路径
                 filePath1 = testFile1.absolute.path;
                 filePath2 = testFile2.absolute.path;
-                return ShareUtils.shareFiles(files: [
+                return ShareUtils.shareFiles([
                   ShareFile(name: 'temp1.txt', path: filePath1),
                   ShareFile(name: 'temp2.txt', path: filePath2),
                 ]);
