@@ -31,7 +31,7 @@ dependencies：
 - [x] [UrlLauncherUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/url_launcher_utils.dart)：URL跳转工具类
 - [x] [NullSafetyUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/null_safety_utils.dart)：空安全工具类
 - [x] [ShareUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/share_utils.dart)：分享工具类
-- [ ] FileUtils：文件工具类
 - [ ] NetworkUtils：网络监听工具类
+- [ ] FileUtils：文件工具类
 - [ ] PermissionUtils：权限工具类
 - [ ] LocationUtils：定位工具类
