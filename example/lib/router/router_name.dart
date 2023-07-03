@@ -23,4 +23,6 @@ class RouterName {
   static String urlLauncher = "/url_launcher";
   /// Share工具类
   static String share = "/share";
+  /// 网络工具类
+  static String connectivity = "/connectivity";
 }

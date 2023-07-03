@@ -11,3 +11,5 @@ export 'encrypt_utils.dart';
 export 'url_launcher_utils.dart';
 export 'null_safety_utils.dart';
 export 'share_utils.dart';
+export 'connectivity_utils.dart';
+export 'package:connectivity_plus/connectivity_plus.dart';

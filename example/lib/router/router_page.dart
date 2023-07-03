@@ -1,5 +1,6 @@
 import 'package:flutter_util_code/share_utils.dart';
 import 'package:flutter_util_code_example/function/app_page.dart';
+import 'package:flutter_util_code_example/function/connectivity_page.dart';
 import 'package:flutter_util_code_example/function/device_page.dart';
 import 'package:flutter_util_code_example/function/encrypted_page.dart';
 import 'package:flutter_util_code_example/function/home_page.dart';
@@ -75,6 +76,11 @@ class RouterPage {
     GetPage(
       name: RouterName.share,
       page: () => const SharePage(),
+    ),
+    /// 网络工具类页
+    GetPage(
+      name: RouterName.connectivity,
+      page: () => const ConnectivityPage(),
     ),
   ];
 }
