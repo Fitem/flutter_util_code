@@ -20,12 +20,12 @@ class DeviceUtils {
   /// 若没有从设备获取到，则生成一个 UUID 作为设备 ID
   static Future<String> getDeviceId() async {
     // 如果已经获取过设备ID，则直接返回
-    if (_deviceId != null && _deviceId!.isNotEmpty) {
+    if (_deviceId.isNotNullOrEmpty) {
       return _deviceId!;
     }
     // 从本地获取设备ID
     String? deviceId = await SharedPrefsUtils.getString(SPConstants.deviceId);
-    if (deviceId != null && deviceId.isNotEmpty) {
+    if (deviceId.isNotNullOrEmpty) {
       _deviceId = deviceId;
       return _deviceId!;
     }
