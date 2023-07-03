@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 ///  基于 [shared_preferences](https://pub.dev/packages/shared_preferences)
 ///  Created by Fitem on 2023/5/31
 class SharedPrefsUtils {
-
   /// 添加String类型数据
   /// [key] 键
   /// [value] 值
@@ -53,8 +52,8 @@ class SharedPrefsUtils {
 
   /// 获取String类型数据
   /// [key] 键
-  /// [defValue] 默认值
-  static Future<String?> getString(String key, [String? defValue]) async {
+  /// [defValue] 默认值：默认为空字符串
+  static Future<String> getString(String key, [String defValue = '']) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? value = prefs.getString(key) ?? defValue;
     _println('getString', key, value);
@@ -63,8 +62,8 @@ class SharedPrefsUtils {
 
   /// 获取int类型数据，如果没有则返回默认值
   /// [key] 键
-  /// [defValue] 默认值
-  static Future<int?> getInt(String key, [int? defValue]) async {
+  /// [defValue] 默认值：默认为0
+  static Future<int> getInt(String key, [int defValue = 0]) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     int? value = prefs.getInt(key) ?? defValue;
     _println('getInt', key, value);
@@ -73,8 +72,8 @@ class SharedPrefsUtils {
 
   /// 获取double类型数据，如果没有则返回默认值
   /// [key] 键
-  /// [defValue] 默认值
-  static Future<double?> getDouble(String key, [double? defValue]) async {
+  /// [defValue] 默认值：默认为0.0
+  static Future<double> getDouble(String key, [double defValue = 0.0]) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     double? value = prefs.getDouble(key) ?? defValue;
     _println('getDouble', key, value);
@@ -83,8 +82,8 @@ class SharedPrefsUtils {
 
   /// 获取bool类型数据，如果没有则返回默认值
   /// [key] 键
-  /// [defValue] 默认值
-  static Future<bool?> getBool(String key, [bool? defValue]) async {
+  /// [defValue] 默认值：默认为false
+  static Future<bool> getBool(String key, [bool defValue = false]) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool? value = prefs.getBool(key) ?? defValue;
     _println('getBool', key, value);
@@ -93,8 +92,8 @@ class SharedPrefsUtils {
 
   /// 获取List<String>类型数据，如果没有则返回默认值
   /// [key] 键
-  /// [defValue] 默认值
-  static Future<List<String>?> getStringList(String key, [List<String>? defValue]) async {
+  /// [defValue] 默认值：默认为空List
+  static Future<List<String>> getStringList(String key, [List<String> defValue = const []]) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String>? value = prefs.getStringList(key) ?? defValue;
     _println('getStringList', key, value);
