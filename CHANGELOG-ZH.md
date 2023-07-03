@@ -2,6 +2,9 @@
 
 Language: [English](CHANGELOG.md) | 简体中文
 
+## 0.3.0
+- 调整 SharedPrefsUtils 返回值改为非空
+
 ## 0.2.0
 - 新增 NetworkUtils: 网络监听工具类
 

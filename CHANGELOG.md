@@ -2,6 +2,9 @@
 
 Language: English | [简体中文](CHANGELOG-ZH.md)
 
+## 0.3.0
+- Adjust SharedPrefsUtils, The return value is non null
+
 ## 0.2.0
 - Add NetworkUtils: Network monitoring utility class
 
