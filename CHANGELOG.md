@@ -2,6 +2,9 @@
 
 Language: English | [简体中文](CHANGELOG-ZH.md)
 
+## 0.2.0
+- Add NetworkUtils: Network monitoring utility class
+
 ## 0.1.0
 - Add ShareUtils: Share utility class
 
