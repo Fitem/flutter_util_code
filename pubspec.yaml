@@ -37,6 +37,8 @@ dependencies:
   share_plus: ^7.0.2
   # 网络监听
   connectivity_plus: ^4.0.1
+  # 权限获取
+  permission_handler: ^10.4.1
 
 dev_dependencies:
   flutter_test:
