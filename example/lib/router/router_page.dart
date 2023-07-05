@@ -6,6 +6,7 @@ import 'package:flutter_util_code_example/function/encrypted_page.dart';
 import 'package:flutter_util_code_example/function/home_page.dart';
 import 'package:flutter_util_code_example/function/log_page.dart';
 import 'package:flutter_util_code_example/function/path_page.dart';
+import 'package:flutter_util_code_example/function/permission_page.dart';
 import 'package:flutter_util_code_example/function/share_page.dart';
 import 'package:flutter_util_code_example/function/shared_prefs/shared_prefs_page.dart';
 import 'package:flutter_util_code_example/function/toast_page.dart';
@@ -81,6 +82,11 @@ class RouterPage {
     GetPage(
       name: RouterName.connectivity,
       page: () => const ConnectivityPage(),
+    ),
+    /// 权限工具类页
+    GetPage(
+      name: RouterName.permission,
+      page: () => const PermissionPage(),
     ),
   ];
 }

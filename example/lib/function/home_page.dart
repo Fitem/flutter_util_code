@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
     RouterName.urlLauncher: 'UrlLauncher工具类',
     RouterName.share: 'Share工具类',
     RouterName.connectivity: '网络工具类',
+    RouterName.permission: '权限工具类',
   };
 
   @override

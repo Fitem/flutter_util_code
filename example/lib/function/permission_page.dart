@@ -29,8 +29,9 @@ class PermissionPageState<PermissionPage> extends State {
           children: [
             _buildButton('当前权限状态', () async {
               PermissionStatus status = await PermissionUtils.getPermissionStatus(permission);
-              ToastUtils.show('获取当前权限状态：$status');
-              return status;
+              String message = '$permission 权限状态：$status';
+              ToastUtils.show(message);
+              return message;
             }),
             _buildButton('请求单个权限', () async {
               PermissionStatus status = await PermissionUtils.requestPermission(
@@ -45,22 +46,22 @@ class PermissionPageState<PermissionPage> extends State {
                 },
                 other: (status) => ToastUtils.showToast('$permission 权限状态：$status'),
               );
-              return status;
+              return '$permission 权限状态：$status';
             }),
             _buildButton('请求多个权限', () async {
               PermissionStatus status = await PermissionUtils.requestPermissions(
                 permissions,
-                success: () => ToastUtils.showToast('$permission 权限获取成功！'),
+                success: () => ToastUtils.showToast('$permissions 权限获取成功！'),
                 denied: (isPermanentlyDenied) {
                   if (isPermanentlyDenied) {
-                    ToastUtils.showToast('$permission 被拒绝请打开应用设置手动开启！');
+                    ToastUtils.showToast('$permissions 被拒绝请打开应用设置手动开启！');
                   } else {
-                    ToastUtils.showToast('$permission 被拒绝，请重新授权！');
+                    ToastUtils.showToast('$permissions 被拒绝，请重新授权！');
                   }
                 },
-                other: (status) => ToastUtils.showToast('$permission 权限状态：$status'),
+                other: (status) => ToastUtils.showToast('$permissions 权限状态：$status'),
               );
-              return status;
+              return '$permissions 权限状态：$status';
             }),
             const Spacer(),
             Expanded(flex: 2, child: DisplayScreen(key: globalKey)),
@@ -71,11 +72,11 @@ class PermissionPageState<PermissionPage> extends State {
   }
 
   /// 通用按钮
-  Widget _buildButton(String text, Future<PermissionStatus> Function() onPressed) {
+  Widget _buildButton(String text, Future<String> Function() onPressed) {
     return ElevatedButton(
         onPressed: () async {
-          PermissionStatus status = await onPressed();
-          addContent('当前权限状态：$status');
+          String content = await onPressed();
+          addContent(content);
         },
         child: Text(text));
   }

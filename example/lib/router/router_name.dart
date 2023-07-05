@@ -25,4 +25,6 @@ class RouterName {
   static String share = "/share";
   /// 网络工具类
   static String connectivity = "/connectivity";
+  /// 权限工具类
+  static String permission = "/permission";
 }
