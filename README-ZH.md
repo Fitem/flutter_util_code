@@ -26,22 +26,22 @@ dependencies：
 ~~~
 isOpenLog : 是否开启日志，默认Debug模式下开启
 println   : 打印日志
-logger 		: 用于网络请求等长内容日志
+logger    : 用于网络请求等长内容日志
 ~~~
 
 - SharedPreference -> [SharedPresUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/shared_preference_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/shared_prefs/shared_prefs_page.dart)
 
 ~~~
-putString 		: 添加String类型数据
-putInt				: 添加int类型数据
-putBool				: 添加bool类型数据
-putDouble			: 添加double类型数据
-putStringList	:	添加List<String>类型数据
-getString			: 获取String类型数据
-getInt				: 获取int类型数据，如果没有则返回默认值
-getDouble			: 获取double类型数据，如果没有则返回默认值
-getBool				: 获取bool类型数据，如果没有则返回默认值
-getStringList	: 获取List<String>类型数据，如果没有则返回默认值
+putString     : 添加String类型数据
+putInt        : 添加int类型数据
+putBool       : 添加bool类型数据
+putDouble     : 添加double类型数据
+putStringList :	添加List<String>类型数据
+getString     : 获取String类型数据
+getInt        : 获取int类型数据，如果没有则返回默认值
+getDouble     : 获取double类型数据，如果没有则返回默认值
+getBool       : 获取bool类型数据，如果没有则返回默认值
+getStringList : 获取List<String>类型数据，如果没有则返回默认值
 ~~~
 
 - 吐司相关 -> [ToastUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/toast_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/toast_page.dart)
