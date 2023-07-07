@@ -212,12 +212,12 @@ requestPermissions 	: 请求多个权限
 - [x] [UrlLauncherUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/url_launcher_utils.dart) : URL跳转工具类
 - [x] [NullSafetyUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/null_safety_utils.dart) : 空安全工具类
 - [x] [ShareUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/share_utils.dart) : 分享工具类
-- [x] [NetworkUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/connectivity_utils.dart) : 网络监听工具类
+- [x] [ConnectivityUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/connectivity_utils.dart) : 网络监听工具类
 - [x] [PermissionUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/permission_utils.dart) : 权限工具类
 - [ ] FormatUtils : 数字解析工具类
 - [ ] LocationUtils : 定位工具类
 
 ### 相关文章
 
-掘金专栏 : [Flutte工具类库整理专栏](https://juejin.cn/column/7239585610863296571)
+掘金专栏 : [Flutter工具类库整理专栏](https://juejin.cn/column/7239585610863296571)
 

@@ -213,7 +213,7 @@ requestPermissions
 - [x] [UrlLauncherUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/url_launcher_utils.dart) : URL jump utility class
 - [x] [NullSafetyUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/null_safety_utils.dart) : Null safety utility class
 - [x] [ShareUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/share_utils.dart) : Share utility class
-- [x] [NetworkUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/connectivity_utils.dart) : Network monitoring utility class
+- [x] [ConnectivityUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/connectivity_utils.dart) : Network monitoring utility class
 - [x] [PermissionUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/permission_utils.dart) : Permission utility class
 - [ ] FormatUtils : Num format utility class
 - [ ] LocationUtils：Location utility class
