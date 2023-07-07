@@ -39,6 +39,8 @@ dependencies:
   connectivity_plus: ^4.0.1
   # 权限获取
   permission_handler: ^10.4.1
+  # intl
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
