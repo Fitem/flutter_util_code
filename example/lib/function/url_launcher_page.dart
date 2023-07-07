@@ -38,7 +38,7 @@ class UrlLauncherPageState<UrlLauncherPage> extends State {
               Timer(const Duration(seconds: 3), () => UrlLauncherUtils.onCloseInAppWebView());
               return Future.value(true);
             }),
-            _buildButton('打电话', () => UrlLauncherUtils.makePhoneCall(phoneNumber)),
+            _buildButton('打电话', () => UrlLauncherUtils.onCall(phoneNumber)),
             _buildButton('发短信', () => UrlLauncherUtils.sendSMS(phoneNumber, content: '短信内容')),
             _buildButton('发送邮件', () => UrlLauncherUtils.sendEmail(email, subject: '邮件主题', content: '邮件内容')),
             _buildButton('打开文件', openFile),

@@ -47,7 +47,7 @@ class UrlLauncherUtils {
   /// 打电话
   /// [phoneNumber] 电话号码  10086
   /// 若不支持打电话则返回false
-  static Future<bool> makePhoneCall(String phoneNumber) async {
+  static Future<bool> onCall(String phoneNumber) async {
     Uri uri = Uri(scheme: 'tel', path: phoneNumber);
     if (!await onCanLaunchUrl(uri.toString())) return false;
     return await launchUrl(uri);
