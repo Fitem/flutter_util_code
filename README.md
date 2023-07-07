@@ -6,7 +6,7 @@ A Flutter utility class collection library that includes some commonly used func
 
 Language: English | [简体中文](README-ZH.md)
 
-### NativeBridge dependency
+## NativeBridge dependency
 
 Add dependencies in pubspec.yaml:
 
@@ -19,7 +19,7 @@ dependencies：
 - sdk: ">=2.18.0 <4.0.0"
 - flutter: ">=3.3.0"
 
-### APIs
+## APIs
 
 - **About Log ->  [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/log_page.dart)**
 
@@ -201,7 +201,7 @@ requestPermission
 requestPermissions 	
 ~~~
 
-### Utils（Continue to update later...）
+## Utils（Continue to update later...）
 - [x] [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart) : Logging utility class
 - [x] [SharedPresUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/shared_preference_utils.dart) : SharedPreferences utility class
 - [x] [ToastUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/toast_utils.dart) : Toast utility class
