@@ -58,7 +58,7 @@ showToast  : 显示Toast支持属性FToastGravity、FToast
 ~~~
 getUuid   : 获取uuid（v1 + v4 通过 getUuidV5 生成的uuid）
 getUuidV1 : 获取uuid v1
-getUuidV4 :	获取uuid v4
+getUuidV4 : 获取uuid v4
 getUuidV5 : 获取uuid v5
 ~~~
 
