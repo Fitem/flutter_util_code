@@ -21,7 +21,7 @@ dependencies：
 
 ## APIs
 
-- 日志相关 ->  [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/log_page.dart)
+- **日志相关 ->  [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/log_page.dart)**
 
 ~~~
 isOpenLog : 是否开启日志，默认Debug模式下开启
@@ -29,7 +29,7 @@ println   : 打印日志
 logger    : 用于网络请求等长内容日志
 ~~~
 
-- SharedPreference -> [SharedPresUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/shared_preference_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/shared_prefs/shared_prefs_page.dart)
+- **SharedPreference -> [SharedPresUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/shared_preference_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/shared_prefs/shared_prefs_page.dart)**
 
 ~~~
 putString     : 添加String类型数据
@@ -44,7 +44,7 @@ getBool       : 获取bool类型数据，如果没有则返回默认值
 getStringList : 获取List<String>类型数据，如果没有则返回默认值
 ~~~
 
-- 吐司相关 -> [ToastUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/toast_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/toast_page.dart)
+- **吐司相关 -> [ToastUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/toast_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/toast_page.dart)**
 
 ~~~
 init       : 初始化Toast
@@ -53,7 +53,7 @@ show       : 显示底部的Toast
 showToast  : 显示Toast支持属性FToastGravity、FToast
 ~~~
 
-- UUID相关 -> [UuidUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/uuid_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/uuid_page.dart)
+- **UUID相关 -> [UuidUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/uuid_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/uuid_page.dart)**
 
 ~~~
 getUuid   : 获取uuid（v1 + v4 通过 getUuidV5 生成的uuid）
@@ -62,7 +62,7 @@ getUuidV4 :	获取uuid v4
 getUuidV5 : 获取uuid v5
 ~~~
 
-- 设备相关 -> [DeviceUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/device_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/device_page.dart)
+- **设备相关 -> [DeviceUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/device_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/device_page.dart)**
 
 ~~~
 getDeviceId      : 获取唯一设备ID
@@ -72,7 +72,7 @@ getSystemName    : 获取设备系统名称
 getBrand         : 设备品牌
 ~~~
 
-- App应用相关 -> [AppUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/app_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/app_page.dart)
+- **App应用相关 -> [AppUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/app_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/app_page.dart)**
 
 ~~~
 getAppName        : App名称
@@ -83,7 +83,7 @@ getBuildSignature : 获取App构建签名
 getInstallerStore : 获取App安装商店
 ~~~
 
-- 文件路径相关 -> [PathUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/path_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/path_page.dart)
+- **文件路径相关 -> [PathUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/path_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/path_page.dart)**
 
 ~~~
 getAppCachePath              : App缓存路径
@@ -101,7 +101,7 @@ getAndroidDownloadPaths      : 获取Android外部存储-下载类型文件的�
 getAndroidDocumentPaths      : 获取Android外部存储-文档类型文件的路径
 ~~~
 
-- 加密相关 -> [EncryptUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/encrypt_utils.dart) -> [Test](https://github.com/Fitem/flutter_util_code/blob/master/test/encrypt_test.dart)
+- **加密相关 -> [EncryptUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/encrypt_utils.dart) -> [Test](https://github.com/Fitem/flutter_util_code/blob/master/test/encrypt_test.dart)**
 
 ~~~
 md5Encrypt          : MD5加密
@@ -117,7 +117,7 @@ md5withRSASign      : MD5withRSA签名，秘钥格式为[pkcs8]
 md5withRSAVerify    : MD5withRSA验签，秘钥格式为[pkcs8]
 ~~~
 
-- URL跳转相关 -> [UrlLauncherUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/url_launcher_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/url_launcher_page.dart)
+- **URL跳转相关 -> [UrlLauncherUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/url_launcher_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/url_launcher_page.dart)**
 
 ~~~
 launchInBrowser     : 浏览器打开url
@@ -131,7 +131,7 @@ openFile            : 打开文件
 onCanLaunchUrl      : 是否支持该url打开
 ~~~
 
-- 空安全相关 -> [NullSafetyUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/null_safety_utils.dart) -> [Test](https://github.com/Fitem/flutter_util_code/blob/master/test/null_safety_test.dart)
+- **空安全相关 -> [NullSafetyUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/null_safety_utils.dart) -> [Test](https://github.com/Fitem/flutter_util_code/blob/master/test/null_safety_test.dart)**
 
 ~~~
 String空安全扩展
@@ -173,7 +173,7 @@ isNotNullOrEmpty : 判断是否不为空
 toNonNullList    : 判断是否为空，如果为空则返回默认值[]
 ~~~
 
-- 分享相关 -> [ShareUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/share_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/share_page.dart)
+- **分享相关 -> [ShareUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/share_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/share_page.dart)**
 
 ~~~
 shareText   : 分享文本
@@ -183,7 +183,7 @@ shareFile   : 分享文件
 shareFiles  : 分享多个文件
 ~~~
 
-- 网络状态相关 -> [NetworkUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/connectivity_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/connectivity_page.dart)
+- **网络状态相关 -> [NetworkUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/connectivity_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/connectivity_page.dart)**
 
 ~~~
 getInstance       : 获取单例
@@ -193,14 +193,26 @@ off               : 取消订阅
 dispose           : 取消网络监听
 ~~~
 
-- 权限相关 -> [PermissionUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/permission_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/permission_page.dart)
+- **权限相关 -> [PermissionUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/permission_utils.dart) -> [Demo](https://github.com/Fitem/flutter_util_code/blob/master/example/lib/function/permission_page.dart)**
 
 ~~~
 getPermissionStatus : 获取权限状态
 requestPermission   : 请求单个权限
 requestPermissions  : 请求多个权限
 ~~~
+- **数字解析相关 -> [FormatUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/format_utils.dart) -> [Test](https://github.com/Fitem/flutter_util_code/blob/master/test/format_test.dart)**
+
+~~~
+formatMoney      : 解析货币数字
+formatPoint      : 解析小数点，默认保留两位小数
+formatPointMax   : 解析小数点，默认最多保留两位小数，若尾数为0，则去掉
+formatInt        : 解析数字，转化为两位数，不足补0
+formatPercent    : 解析数字，转化为百分比
+formatPermillage : 解析数字，转化为千分比
+~~~
+
 ## 工具类整理（后续持续更新中...）
+
 - [x] [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart)  : 日志工具类
 - [x] [SharedPresUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/shared_preference_utils.dart) : SharedPreferences工具类
 - [x] [ToastUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/toast_utils.dart) :Toast工具类
@@ -214,7 +226,7 @@ requestPermissions  : 请求多个权限
 - [x] [ShareUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/share_utils.dart) : 分享工具类
 - [x] [ConnectivityUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/connectivity_utils.dart) : 网络监听工具类
 - [x] [PermissionUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/permission_utils.dart) : 权限工具类
-- [ ] FormatUtils : 数字解析工具类
+- [x] [FormatUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/format_utils.dart)  : 数字解析工具类
 - [ ] LocationUtils : 定位工具类
 
 ## 相关文章

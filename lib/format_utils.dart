@@ -40,7 +40,7 @@ class FormatUtils {
     return format.format(num);
   }
 
-  /// 解析小数点，做多保留两位小数，若尾数为0，则去掉
+  /// 解析小数点，默认最多保留两位小数，若尾数为0，则去掉
   /// [num] 数字
   /// [digit] 保留小数位数，默认保留2位小数
   /// [locale] 地域

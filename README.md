@@ -201,7 +201,19 @@ requestPermission
 requestPermissions 	
 ~~~
 
+- **About Format -> [FormatUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/format_utils.dart) -> [Test](https://github.com/Fitem/flutter_util_code/blob/master/test/format_test.dart)**
+
+~~~
+formatMoney
+formatPoint
+formatPointMax
+formatInt
+formatPercent
+formatPermillage
+~~~
+
 ## Utils（Continue to update later...）
+
 - [x] [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart) : Logging utility class
 - [x] [SharedPresUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/shared_preference_utils.dart) : SharedPreferences utility class
 - [x] [ToastUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/toast_utils.dart) : Toast utility class
@@ -215,5 +227,5 @@ requestPermissions
 - [x] [ShareUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/share_utils.dart) : Share utility class
 - [x] [ConnectivityUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/connectivity_utils.dart) : Network monitoring utility class
 - [x] [PermissionUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/permission_utils.dart) : Permission utility class
-- [ ] FormatUtils : Num format utility class
+- [x] [FormatUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/format_utils.dart) : Num format utility class
 - [ ] LocationUtils：Location utility class
