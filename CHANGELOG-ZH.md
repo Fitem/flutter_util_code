@@ -2,6 +2,9 @@
 
 Language: [English](CHANGELOG.md) | 简体中文
 
+## 0.5.0
+- 新增 FormatUtils: 格式化工具类
+
 ## 0.4.0
 - 新增 PermissionUtils: 权限工具类
 

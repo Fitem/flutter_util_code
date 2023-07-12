@@ -2,6 +2,9 @@
 
 Language: English | [简体中文](CHANGELOG-ZH.md)
 
+## 0.5.0
+- Add FormatUtils: Format utility class
+
 ## 0.4.0
 - Add PermissionUtils: Permission utility class
 
