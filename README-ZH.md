@@ -211,6 +211,23 @@ formatPercent    : 解析数字，转化为百分比
 formatPermillage : 解析数字，转化为千分比
 ~~~
 
+- **日期相关 -> [DateUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/date_utils.dart) -> [Test](https://github.com/Fitem/flutter_util_code/blob/master/test/date_test.dart)**
+
+~~~
+formatDateTime   : 日期时间格式化
+formatDate       : 日期格式化
+formatTime       : 时间格式化
+parseDateTime    : 解析日期时间
+getWeekIndex     : 获取星期几
+getWeekName      : 获取星期名称
+diff             : 计算两个时间的时间差
+diffRangeLevel   : 计算两个时间的差值范围等级
+diffRangeName    : 相差时间范围说明
+toDateTime       : int转化DateTime
+~~~
+
+
+
 ## 工具类整理（后续持续更新中...）
 
 - [x] [LogUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/log_utils.dart)  : 日志工具类
@@ -227,6 +244,7 @@ formatPermillage : 解析数字，转化为千分比
 - [x] [ConnectivityUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/connectivity_utils.dart) : 网络监听工具类
 - [x] [PermissionUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/permission_utils.dart) : 权限工具类
 - [x] [FormatUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/format_utils.dart)  : 数字解析工具类
+- [x] [DateUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/date_utils.dart) : 日期工具类
 - [ ] LocationUtils : 定位工具类
 
 ## 相关文章

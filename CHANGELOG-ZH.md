@@ -2,6 +2,9 @@
 
 Language: [English](CHANGELOG.md) | 简体中文
 
+## 0.6.0
+- 新增 DateUtils: 日期工具类
+
 ## 0.5.0
 - 新增 FormatUtils: 格式化工具类
 

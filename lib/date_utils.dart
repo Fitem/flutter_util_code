@@ -71,14 +71,14 @@ class DateUtils {
     return dateFormat.parse(time, utc);
   }
 
-  /// 解析星期几
+  /// 获取星期几
   /// [time] 时间字符串
   /// 从周一开始，周日为6
   static int getWeekIndex(DateTime timestamp) {
     return timestamp.weekday - 1;
   }
 
-  /// 解析星期名称
+  /// 获取星期名称
   /// [time] 时间字符串
   /// [weekList] 星期名称列表 默认为 [weekList]
   static String getWeekName(DateTime timestamp, [List<String> weekList = weekList]) {

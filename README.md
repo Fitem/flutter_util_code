@@ -228,4 +228,5 @@ formatPermillage
 - [x] [ConnectivityUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/connectivity_utils.dart) : Network monitoring utility class
 - [x] [PermissionUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/permission_utils.dart) : Permission utility class
 - [x] [FormatUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/format_utils.dart) : Num format utility class
+- [x] [DateUtils](https://github.com/Fitem/flutter_util_code/blob/master/lib/date_utils.dart) : Date format utility class
 - [ ] LocationUtils：Location utility class
