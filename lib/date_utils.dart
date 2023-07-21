@@ -86,6 +86,10 @@ class DateUtils {
   }
 
   /// 计算两个时间的时间差
+  /// [start] 开始时间
+  /// [end] 结束时间
+  /// 返回值：毫秒数
+  /// 若为负值，则表示 [end] 在 [start] 之前
   static int diff(DateTime start, DateTime end) {
     return end.millisecondsSinceEpoch - start.millisecondsSinceEpoch;
   }
@@ -94,19 +98,20 @@ class DateUtils {
   /// [start] 开始时间
   /// [end] 结束时间
   /// 返回值：0 - 6 对应 1分钟内、1小时内、1天内、1周内、1月内、1年内、1年以上
-  static int diffRangeClass(DateTime start, DateTime end) {
-    int duration = diff(start, end);
-    if (duration < oneMinute) {
+  static int diffRangeLevel(DateTime start, DateTime end) {
+    // 相差时间，单位毫秒，取绝对值
+    int duration = diff(start, end).abs();
+    if (duration <= oneMinute) {
       return 0;
-    } else if (duration < oneHour) {
+    } else if (duration <= oneHour) {
       return 1;
-    } else if (duration < oneDay) {
+    } else if (duration <= oneDay) {
       return 2;
-    } else if (duration < oneWeek) {
+    } else if (duration <= oneWeek) {
       return 3;
-    } else if (duration < oneMonth) {
+    } else if (duration <= oneMonth) {
       return 4;
-    } else if (duration < oneYear) {
+    } else if (duration <= oneYear) {
       return 5;
     } else {
       return 6;
@@ -118,7 +123,7 @@ class DateUtils {
   /// [end] 结束时间
   /// [timeRangeList] 相差时间名称列表 默认为 [timeRangeList]
   static String diffRangeName(DateTime start, DateTime end, [List<String> timeRangeList = timeRangeList]) {
-    int rangeClass = diffRangeClass(start, end);
+    int rangeClass = diffRangeLevel(start, end);
     return timeRangeList[rangeClass];
   }
 }
@@ -127,5 +132,6 @@ class DateUtils {
 extension DateTimeUtils on int {
   /// 时间戳转日期时间
   /// [isUtc] 是否使用utc时间 默认为 false
+  /// 单位：毫秒
   DateTime toDateTime([bool isUtc = false]) => DateTime.fromMillisecondsSinceEpoch(this, isUtc: isUtc);
 }
