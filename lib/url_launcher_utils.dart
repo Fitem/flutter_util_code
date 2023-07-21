@@ -57,7 +57,11 @@ class UrlLauncherUtils {
   /// [phoneNumber] 电话号码  10086
   /// 若不支持发短信则返回false
   static Future<bool> sendSMS(String phoneNumber, {String content = ''}) async {
-    Uri uri = Uri(scheme: 'sms', path: phoneNumber, queryParameters: {'body': content});
+    Uri uri = Uri(
+      scheme: 'sms',
+      path: phoneNumber,
+      queryParameters: content.isNotNullOrEmpty ? {'body': Uri.encodeComponent(content)} : {},
+    );
     if (!await onCanLaunchUrl(uri.toString())) return false;
     return await launchUrl(uri);
   }
